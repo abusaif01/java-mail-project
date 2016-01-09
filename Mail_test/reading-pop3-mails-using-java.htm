@@ -1,0 +1,1014 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+	<title>Reading POP3 Mails Using Java</title>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all posts" href="http://feeds.feedburner.com/hiteshagrawal/RwlS">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all comments" href="http://www.hiteshagrawal.com/comments/feed">
+	<link rel="pingback" href="http://www.hiteshagrawal.com/xmlrpc.php">
+
+	<!-- style START -->
+	<!-- default style -->
+	<style type="text/css" media="screen">@import url( http://www.hiteshagrawal.com/wp-content/themes/inove/style.css );</style>
+	<!-- for translations -->
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://www.hiteshagrawal.com/wp-content/themes/inove/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	<script type="text/javascript" src="reading-pop3-mails-using-java_files/base.js"></script>
+	<script type="text/javascript" src="reading-pop3-mails-using-java_files/menu.js"></script>
+	<!-- script END -->
+
+	<link rel="alternate" type="application/rss+xml" title="Techie Zone » Reading POP3 Mails Using Java Comments Feed" href="http://www.hiteshagrawal.com/java/reading-pop3-mails-using-java/feed">
+<link rel="stylesheet" id="contact-form-7-css" href="reading-pop3-mails-using-java_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="sociable-front-css-css" href="reading-pop3-mails-using-java_files/sociable.css" type="text/css" media="all">
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/l10n.js"></script>
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/jquery_002.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.hiteshagrawal.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.hiteshagrawal.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Techie Zone" href="http://www.hiteshagrawal.com/">
+<link rel="start" title="Installing FFMPEG on Linux" href="http://www.hiteshagrawal.com/ffmpeg/installing-ffmpeg-easily-on-linux">
+<link rel="prev" title="Reading Excel Sheet Documents in Java" href="http://www.hiteshagrawal.com/java/java-excel-reading-excel-sheet-in-java">
+<link rel="next" title="Reading IMAP Server Emails Using Java" href="http://www.hiteshagrawal.com/java/reading-imap-server-emails-using-java">
+<meta name="generator" content="WordPress 3.1">
+<link rel="shortlink" href="http://www.hiteshagrawal.com/?p=313">
+
+<!-- All in One SEO Pack 1.6.13.1 by Michael Torbert of Semper Fi Web Design[326,382] -->
+<meta name="description" content="Java provides with set of API called JavaMail that allows you to connect to and read POP3 Server Emails. This article will show you how we can read POP3Server Emails using Java.">
+<meta name="keywords" content="j2ee, java, java application development, j2me, struts, jdom, j2se, jsp, servlets,java">
+<link rel="canonical" href="http://www.hiteshagrawal.com/java/reading-pop3-mails-using-java">
+<!-- /all in one seo pack -->
+<script type="text/javascript">
+//<![CDATA[
+var _wpcf7 = { cached: 1 };
+//]]>
+</script>
+<link rel="stylesheet" type="text/css" href="reading-pop3-mails-using-java_files/recaptcha.css">
+<link rel="stylesheet" href="reading-pop3-mails-using-java_files/wp-syntax.css" type="text/css" media="screen">
+		<!-- Meta Manager Start -->
+		<meta name="y_key" content="bd6ac6f4fa028331">
+		<!-- Meta Manager End -->
+		<style type="text/css">.recaptchatable td img{display:block}.recaptchatable .recaptcha_r1_c1{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) 0 -63px no-repeat;width:318px;height:9px}.recaptchatable .recaptcha_r2_c1{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -18px 0 no-repeat;width:9px;height:57px}.recaptchatable .recaptcha_r2_c2{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -27px 0 no-repeat;width:9px;height:57px}.recaptchatable .recaptcha_r3_c1{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) 0 0 no-repeat;width:9px;height:63px}.recaptchatable .recaptcha_r3_c2{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -18px -57px no-repeat;width:300px;height:6px}.recaptchatable .recaptcha_r3_c3{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -9px 0 no-repeat;width:9px;height:63px}.recaptchatable .recaptcha_r4_c1{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -43px 0 no-repeat;width:171px;height:49px}.recaptchatable .recaptcha_r4_c2{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -36px 0 no-repeat;width:7px;height:57px}.recaptchatable .recaptcha_r4_c4{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -214px 0 no-repeat;width:97px;height:57px}.recaptchatable .recaptcha_r7_c1{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -43px -49px no-repeat;width:171px;height:8px}.recaptchatable .recaptcha_r8_c1{background:url(http://www.google.com/recaptcha/api/img/red/sprite.png) -43px -49px no-repeat;width:25px;height:8px}.recaptchatable .recaptcha_image_cell center img{height:57px}.recaptchatable .recaptcha_image_cell center{height:57px}.recaptchatable .recaptcha_image_cell{background-color:white;height:57px}#recaptcha_area,#recaptcha_table{width:318px!important}.recaptchatable,#recaptcha_area tr,#recaptcha_area td,#recaptcha_area th{margin:0!important;border:0!important;padding:0!important;border-collapse:collapse!important;vertical-align:middle!important}.recaptchatable *{margin:0;padding:0;border:0;font-family:helvetica,sans-serif;font-size:8pt;color:black;position:static;top:auto;left:auto;right:auto;bottom:auto;text-align:left!important}.recaptchatable #recaptcha_image{margin:auto}.recaptchatable img{border:0!important;margin:0!important;padding:0!important}.recaptchatable a,.recaptchatable a:hover{outline:none;border:0!important;padding:0!important;text-decoration:none;color:blue;background:none!important;font-weight:normal}.recaptcha_input_area{position:relative!important;width:146px!important;height:45px!important;margin-left:20px!important;margin-right:5px!important;margin-top:4px!important;background:none!important}.recaptchatable label.recaptcha_input_area_text{margin:0!important;padding:0!important;position:static!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;background:none!important;height:auto!important;width:auto!important}.recaptcha_theme_red label.recaptcha_input_area_text,.recaptcha_theme_white label.recaptcha_input_area_text{color:black!important}.recaptcha_theme_blackglass label.recaptcha_input_area_text{color:white!important}.recaptchatable #recaptcha_response_field{width:145px!important;position:absolute!important;bottom:7px!important;padding:0!important;margin:0!important;font-size:10pt}.recaptcha_theme_blackglass #recaptcha_response_field,.recaptcha_theme_white #recaptcha_response_field{border:1px solid gray}.recaptcha_theme_red #recaptcha_response_field{border:1px solid #cca940}.recaptcha_audio_cant_hear_link{font-size:7pt;color:black}.recaptchatable{line-height:1em}#recaptcha_instructions_error{color:red!important}
+
+.recaptcha_is_showing_audio .recaptcha_only_if_image,.recaptcha_isnot_showing_audio .recaptcha_only_if_audio,.recaptcha_had_incorrect_sol .recaptcha_only_if_no_incorrect_sol,.recaptcha_nothad_incorrect_sol .recaptcha_only_if_incorrect_sol{display:none !important}</style></head><body>
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+<!-- google_ad_section_start(weight=ignore) -->
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+		<h1 id="title"><a href="http://www.hiteshagrawal.com/">Techie Zone</a></h1>
+		<div id="tagline">Software Programming and Tutorials</div>
+	</div>
+
+	<div class="fixed"></div>
+<!-- google_ad_section_end -->
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+<!-- google_ad_section_start(weight=ignore) -->
+	<!-- menus START -->
+	<ul id="menus">
+		<li class="page_item"><a class="home" title="Home" href="http://www.hiteshagrawal.com/">Home</a></li>
+		<li class="page_item page-item-116 current_page_parent"><a href="http://www.hiteshagrawal.com/about-me" title="About Me">About Me</a></li>
+<li class="page_item page-item-854"><a href="http://www.hiteshagrawal.com/contact" title="Contact">Contact</a></li>
+<li class="page_item page-item-894"><a href="http://www.hiteshagrawal.com/link-exchange" title="Link Exchange">Link Exchange</a></li>
+<li class="page_item page-item-899"><a href="http://www.hiteshagrawal.com/ajax-tutorials" title="Ajax Tutorials">Ajax Tutorials</a></li>
+<li class="page_item page-item-920"><a href="http://www.hiteshagrawal.com/php-tutorials" title="PHP Tutorials">PHP Tutorials</a></li>
+		<!--<li class="page_item page-item-900"><a title="Developer Forum" href="/forum">Developer 
+                Forum</a></li> -->
+		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+	</ul>
+	<!-- menus END -->
+
+	<!-- searchbox START -->
+	<div id="searchbox">
+					<form action="http://www.hiteshagrawal.com" method="get">
+				<div class="content">
+					<input id="acpro_inp0" class="textfield searchtip" name="s" size="24" value="Type text to search here..." type="text">
+					<input class="button" value="" type="submit">
+				</div>
+			</form>
+			</div>
+<script type="text/javascript">
+//<![CDATA[
+	var searchbox = MGJS.$("searchbox");
+	var searchtxt = MGJS.getElementsByClassName("textfield", "input", searchbox)[0];
+	var searchbtn = MGJS.getElementsByClassName("button", "input", searchbox)[0];
+	var tiptext = "Type text to search here...";
+	if(searchtxt.value == "" || searchtxt.value == tiptext) {
+		searchtxt.className += " searchtip";
+		searchtxt.value = tiptext;
+	}
+	searchtxt.onfocus = function(e) {
+		if(searchtxt.value == tiptext) {
+			searchtxt.value = "";
+			searchtxt.className = searchtxt.className.replace(" searchtip", "");
+		}
+	}
+	searchtxt.onblur = function(e) {
+		if(searchtxt.value == "") {
+			searchtxt.className += " searchtip";
+			searchtxt.value = tiptext;
+		}
+	}
+	searchbtn.onclick = function(e) {
+		if(searchtxt.value == "" || searchtxt.value == tiptext) {
+			return false;
+		}
+	}
+//]]>
+</script>
+	<!-- searchbox END -->
+
+	<div class="fixed"></div>
+<!-- google_ad_section_end -->
+</div>
+<!-- navigation END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+<!-- google_ad_section_start-->
+
+
+	<div id="postpath">
+		<script type="text/javascript"><!--
+google_ad_client = "pub-9693430925007646";
+/* 468x15, created 13/04/08 */
+google_ad_slot = "4588317730";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/show_ads.js">
+</script><ins style="display: inline-table; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 468px;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 468px;"><iframe allowtransparency="true" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+='.call';setTimeout(h,0)}else if(h.match){i+='.nav';w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" vspace="0" id="aswift_0" name="aswift_0" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="15" scrolling="no" width="468"></iframe></ins></ins>	
+		<!--<a title="Go to homepage" href="http://www.hiteshagrawal.com/">Home</a>
+		 &gt; <a href="http://www.hiteshagrawal.com/category/java" title="View all posts in Java" rel="category tag">Java</a>		 &gt; Reading POP3 Mails Using Java-->
+	</div>
+        <div class="post" id="post-313">
+		<h2>Reading POP3 Mails Using Java</h2>
+		<div class="info">
+			<span class="date">December 22nd, 2008</span>
+			<span class="author"><a href="http://www.hiteshagrawal.com/author/admin" title="Posts by Hitesh Agrawal">Hitesh Agrawal</a></span>										<span class="addcomment"><a href="#respond">Leave a comment</a></span>
+				<span class="comments"><a href="#comments">Go to comments</a></span>
+						<div class="fixed"></div>
+		</div>
+		<p align="center">
+		<script type="text/javascript"><!--
+			google_ad_client = "pub-9693430925007646";
+			/* 468x60, created 11/04/10 */
+			google_ad_slot = "8125277063";
+			google_ad_width = 468;
+			google_ad_height = 60;
+			//-->
+		</script>
+		<script type="text/javascript" src="reading-pop3-mails-using-java_files/show_ads.js">
+		</script><ins style="display: inline-table; border: medium none; height: 60px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 468px;"><ins id="aswift_1_anchor" style="display: block; border: medium none; height: 60px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 468px;"><iframe allowtransparency="true" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+='.call';setTimeout(h,0)}else if(h.match){i+='.nav';w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" vspace="0" id="aswift_1" name="aswift_1" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="60" scrolling="no" width="468"></iframe></ins></ins>
+		</p>
+		<div class="content">
+                        <!-- google_ad_section_end -->
+                        <!-- google_ad_section_start -->
+			<p><strong>Java</strong> provides with set of API called <a href="http://java.sun.com/products/javamail/"><strong>JavaMail</strong></a> that allows you to connect to and read <strong>POP3 Emails</strong>. This article will show you how we can read POP3 Emails using Java.<br>
+<span id="more-313"></span></p>
+
+<div class="wp_syntax"><div class="code"><pre class="java" style="font-family: monospace;"><span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.AuthenticationFailedException</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.Folder</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.FolderClosedException</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.FolderNotFoundException</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.Message</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.Multipart</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.NoSuchProviderException</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.Part</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.ReadOnlyFolderException</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.Session</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.Store</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.StoreClosedException</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">import</span> <span style="color: rgb(0, 102, 153);">javax.mail.internet.InternetAddress</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+<span style="color: rgb(0, 0, 0); font-weight: bold;">public</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">class</span> readEmails <span style="color: rgb(0, 153, 0);">{</span>
+&nbsp;
+<span style="color: rgb(102, 102, 102); font-style: italic;">//Constructor Call</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">public</span> readEmails<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+   processMail<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 153, 0);">}</span>
+&nbsp;
+<span style="color: rgb(102, 102, 102); font-style: italic;">//Responsible for printing Data to Console</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">private</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">void</span> printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 51, 153);">String</span> data<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+   <span style="color: rgb(0, 51, 153);">System</span>.<span style="color: rgb(0, 102, 51);">out</span>.<span style="color: rgb(0, 102, 51);">println</span><span style="color: rgb(0, 153, 0);">(</span>data<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 153, 0);">}</span>
+&nbsp;
+<span style="color: rgb(0, 0, 0); font-weight: bold;">public</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">void</span> processMail<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+   Session session <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   Store store <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   Folder folder <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   Message message <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   Message<span style="color: rgb(0, 153, 0);">[</span><span style="color: rgb(0, 153, 0);">]</span> messages <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   <span style="color: rgb(0, 51, 153);">Object</span> messagecontentObject <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   <span style="color: rgb(0, 51, 153);">String</span> sender <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   <span style="color: rgb(0, 51, 153);">String</span> subject <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   Multipart multipart <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   Part part <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+   <span style="color: rgb(0, 51, 153);">String</span> contentType <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+   <span style="color: rgb(0, 0, 0); font-weight: bold;">try</span> <span style="color: rgb(0, 153, 0);">{</span>
+      printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"--------------processing mails started-----------------"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+      session <span style="color: rgb(51, 153, 51);">=</span> Session.<span style="color: rgb(0, 102, 51);">getDefaultInstance</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 51, 153);">System</span>.<span style="color: rgb(0, 102, 51);">getProperties</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span>, <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"getting the session for accessing email."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+      store <span style="color: rgb(51, 153, 51);">=</span> session.<span style="color: rgb(0, 102, 51);">getStore</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"pop3"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      store.<span style="color: rgb(0, 102, 51);">connect</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"host Name OR IP"</span>,<span style="color: rgb(0, 0, 255);">"username"</span>,<span style="color: rgb(0, 0, 255);">"password"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+      printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Connection established with POP3 server."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">// Get a handle on the default folder</span>
+      folder <span style="color: rgb(51, 153, 51);">=</span> store.<span style="color: rgb(0, 102, 51);">getDefaultFolder</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Getting the Inbox folder."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the "Inbox"</span>
+      folder <span style="color: rgb(51, 153, 51);">=</span> folder.<span style="color: rgb(0, 102, 51);">getFolder</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"inbox"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">//Reading the Email Index in Read / Write Mode</span>
+      folder.<span style="color: rgb(0, 102, 51);">open</span><span style="color: rgb(0, 153, 0);">(</span>Folder.<span style="color: rgb(0, 102, 51);">READ_WRITE</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the messages</span>
+      messages <span style="color: rgb(51, 153, 51);">=</span> folder.<span style="color: rgb(0, 102, 51);">getMessages</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">// Loop over all of the messages</span>
+      <span style="color: rgb(0, 0, 0); font-weight: bold;">for</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 102); font-weight: bold;">int</span> messageNumber <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(204, 102, 204);">0</span><span style="color: rgb(51, 153, 51);">;</span> messageNumber <span style="color: rgb(51, 153, 51);">&lt;</span> messages.<span style="color: rgb(0, 102, 51);">length</span><span style="color: rgb(51, 153, 51);">;</span> messageNumber<span style="color: rgb(51, 153, 51);">++</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+           <span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the next message to be read</span>
+	   message <span style="color: rgb(51, 153, 51);">=</span> messages<span style="color: rgb(0, 153, 0);">[</span>messageNumber<span style="color: rgb(0, 153, 0);">]</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+           <span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the message content</span>
+           messagecontentObject <span style="color: rgb(51, 153, 51);">=</span> message.<span style="color: rgb(0, 102, 51);">getContent</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+           <span style="color: rgb(102, 102, 102); font-style: italic;">// Determine email type</span>
+           <span style="color: rgb(0, 0, 0); font-weight: bold;">if</span> <span style="color: rgb(0, 153, 0);">(</span>messagecontentObject <span style="color: rgb(0, 0, 0); font-weight: bold;">instanceof</span> Multipart<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+               printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Found Email with Attachment"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+               sender <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">(</span>InternetAddress<span style="color: rgb(0, 153, 0);">)</span> message.<span style="color: rgb(0, 102, 51);">getFrom</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">[</span><span style="color: rgb(204, 102, 204);">0</span><span style="color: rgb(0, 153, 0);">]</span><span style="color: rgb(0, 153, 0);">)</span>.<span style="color: rgb(0, 102, 51);">getPersonal</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+               <span style="color: rgb(102, 102, 102); font-style: italic;">// If the "personal" information has no entry, check the address for the sender information</span>
+               printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"If the personal information has no entry, check the address for the sender information."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+	       <span style="color: rgb(0, 0, 0); font-weight: bold;">if</span> <span style="color: rgb(0, 153, 0);">(</span>sender <span style="color: rgb(51, 153, 51);">==</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+	 	   sender <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">(</span>InternetAddress<span style="color: rgb(0, 153, 0);">)</span> message.<span style="color: rgb(0, 102, 51);">getFrom</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">[</span><span style="color: rgb(204, 102, 204);">0</span><span style="color: rgb(0, 153, 0);">]</span><span style="color: rgb(0, 153, 0);">)</span>.<span style="color: rgb(0, 102, 51);">getAddress</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+		   printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"sender in NULL. Printing Address:"</span> <span style="color: rgb(51, 153, 51);">+</span> sender<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+	       <span style="color: rgb(0, 153, 0);">}</span>
+               printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Sender -."</span> <span style="color: rgb(51, 153, 51);">+</span> sender<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+               <span style="color: rgb(102, 102, 102); font-style: italic;">// Get the subject information</span>
+               subject <span style="color: rgb(51, 153, 51);">=</span> message.<span style="color: rgb(0, 102, 51);">getSubject</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+               printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"subject="</span> <span style="color: rgb(51, 153, 51);">+</span> subject<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+               <span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the Multipart object from the message</span>
+               multipart <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 153, 0);">(</span>Multipart<span style="color: rgb(0, 153, 0);">)</span> message.<span style="color: rgb(0, 102, 51);">getContent</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+               printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Retrieve the Multipart object from the message"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+               <span style="color: rgb(102, 102, 102); font-style: italic;">// Loop over the parts of the email</span>
+               <span style="color: rgb(0, 0, 0); font-weight: bold;">for</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 102); font-weight: bold;">int</span> i <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(204, 102, 204);">0</span><span style="color: rgb(51, 153, 51);">;</span> i <span style="color: rgb(51, 153, 51);">&lt;</span> multipart.<span style="color: rgb(0, 102, 51);">getCount</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span> i<span style="color: rgb(51, 153, 51);">++</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+                    <span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the next part</span>
+                    part <span style="color: rgb(51, 153, 51);">=</span> multipart.<span style="color: rgb(0, 102, 51);">getBodyPart</span><span style="color: rgb(0, 153, 0);">(</span>i<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+                    <span style="color: rgb(102, 102, 102); font-style: italic;">// Get the content type</span>
+                    contentType <span style="color: rgb(51, 153, 51);">=</span> part.<span style="color: rgb(0, 102, 51);">getContentType</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+                   <span style="color: rgb(102, 102, 102); font-style: italic;">// Display the content type</span>
+		   printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Content: "</span> <span style="color: rgb(51, 153, 51);">+</span> contentType<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+                   <span style="color: rgb(0, 0, 0); font-weight: bold;">if</span> <span style="color: rgb(0, 153, 0);">(</span>contentType.<span style="color: rgb(0, 102, 51);">startsWith</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"text/plain"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+			printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"---------reading content type text/plain  mail -------------"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+		   <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">else</span> <span style="color: rgb(0, 153, 0);">{</span>
+			<span style="color: rgb(102, 102, 102); font-style: italic;">// Retrieve the file name</span>
+			<span style="color: rgb(0, 51, 153);">String</span> fileName <span style="color: rgb(51, 153, 51);">=</span> part.<span style="color: rgb(0, 102, 51);">getFileName</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+			printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"retrive the fileName="</span><span style="color: rgb(51, 153, 51);">+</span> fileName<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+		   <span style="color: rgb(0, 153, 0);">}</span>
+	      <span style="color: rgb(0, 153, 0);">}</span>
+	   <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">else</span> <span style="color: rgb(0, 153, 0);">{</span>
+	      printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Found Mail Without Attachment"</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+	      sender <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">(</span>InternetAddress<span style="color: rgb(0, 153, 0);">)</span> message.<span style="color: rgb(0, 102, 51);">getFrom</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">[</span><span style="color: rgb(204, 102, 204);">0</span><span style="color: rgb(0, 153, 0);">]</span><span style="color: rgb(0, 153, 0);">)</span>.<span style="color: rgb(0, 102, 51);">getPersonal</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+              <span style="color: rgb(102, 102, 102); font-style: italic;">// If the "personal" information has no entry, check the address for the sender information</span>
+	      printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"If the personal information has no entry, check the address for the sender information."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+              <span style="color: rgb(0, 0, 0); font-weight: bold;">if</span> <span style="color: rgb(0, 153, 0);">(</span>sender <span style="color: rgb(51, 153, 51);">==</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">null</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+		sender <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">(</span>InternetAddress<span style="color: rgb(0, 153, 0);">)</span> message.<span style="color: rgb(0, 102, 51);">getFrom</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">[</span><span style="color: rgb(204, 102, 204);">0</span><span style="color: rgb(0, 153, 0);">]</span><span style="color: rgb(0, 153, 0);">)</span>.<span style="color: rgb(0, 102, 51);">getAddress</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+		printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"sender in NULL. Printing Address:"</span> <span style="color: rgb(51, 153, 51);">+</span> sender<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+	     <span style="color: rgb(0, 153, 0);">}</span>
+&nbsp;
+             <span style="color: rgb(102, 102, 102); font-style: italic;">// Get the subject information</span>
+	     subject <span style="color: rgb(51, 153, 51);">=</span> message.<span style="color: rgb(0, 102, 51);">getSubject</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+	     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"subject="</span> <span style="color: rgb(51, 153, 51);">+</span> subject<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+	 <span style="color: rgb(0, 153, 0);">}</span>
+      <span style="color: rgb(0, 153, 0);">}</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">// Close the folder</span>
+      folder.<span style="color: rgb(0, 102, 51);">close</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 102); font-weight: bold;">true</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+      <span style="color: rgb(102, 102, 102); font-style: italic;">// Close the message store</span>
+      store.<span style="color: rgb(0, 102, 51);">close</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span><span style="color: rgb(0, 153, 0);">(</span>AuthenticationFailedException e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span><span style="color: rgb(0, 153, 0);">(</span>FolderClosedException e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span><span style="color: rgb(0, 153, 0);">(</span>FolderNotFoundException e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span>  <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 51, 153);">NoSuchProviderException</span> e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span><span style="color: rgb(0, 153, 0);">(</span>ReadOnlyFolderException e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span><span style="color: rgb(0, 153, 0);">(</span>StoreClosedException e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">catch</span> <span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 51, 153);">Exception</span> e<span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+     printData<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 0, 255);">"Not able to process the mail reading."</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+     e.<span style="color: rgb(0, 102, 51);">printStackTrace</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+  <span style="color: rgb(0, 153, 0);">}</span>
+<span style="color: rgb(0, 153, 0);">}</span>
+&nbsp;
+<span style="color: rgb(102, 102, 102); font-style: italic;">//Main  Function for The readEmail Class</span>
+<span style="color: rgb(0, 0, 0); font-weight: bold;">public</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">static</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">void</span> main<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 51, 153);">String</span> args<span style="color: rgb(0, 153, 0);">[</span><span style="color: rgb(0, 153, 0);">]</span><span style="color: rgb(0, 153, 0);">)</span> <span style="color: rgb(0, 153, 0);">{</span>
+    <span style="color: rgb(102, 102, 102); font-style: italic;">//Creating new readEmail Object</span>
+    readEmails readMail <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">new</span> readEmails<span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+&nbsp;
+    <span style="color: rgb(102, 102, 102); font-style: italic;">//Calling processMail Function to read from POP3 Account</span>
+    readMail.<span style="color: rgb(0, 102, 51);">processMail</span><span style="color: rgb(0, 153, 0);">(</span><span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 153, 0);">}</span>
+&nbsp;
+<span style="color: rgb(0, 153, 0);">}</span></pre></div></div>
+
+<p></p><center><form method="post" action=""><input name="ip" value="89.133.194.37" type="hidden"><p>Your email:<br><input id="acpro_inp3" name="email" value="Enter email address..." size="20" onfocus="if (this.value == 'Enter email address...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email address...';}" type="text"></p><p><input name="subscribe" value="Subscribe" type="submit">&nbsp;<input name="unsubscribe" value="Unsubscribe" type="submit"></p></form>
+</center><br>
+<strong>Code Explanation:</strong>
+<ul>
+<li><strong>processMail()</strong> function is the core function responsible for connecting and reading the mails.</li>
+<li>Here i am reading the INBOX folder of the email account.</li>
+<li>Also i am reading the emails in READ-WRITE mode that allows me to do read and modify emails at runtime.</li>
+<li>I am than iterating to the individual messages using for loop.</li>
+<li>While  iterating individual messages i am checking whether the message contains attachment or not.</li>
+<li>Finally i am closing the email folder and store connection.</li>
+</ul>
+
+<p align="center"><script type="text/javascript"><!--
+google_ad_client = "pub-9693430925007646";
+/* 300x250, created 25/01/08 */
+google_ad_slot = "7944215341";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script><br>
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/show_ads.js">
+</script><ins style="display: inline-table; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><ins id="aswift_2_anchor" style="display: block; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><iframe allowtransparency="true" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+='.call';setTimeout(h,0)}else if(h.match){i+='.nav';w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" vspace="0" id="aswift_2" name="aswift_2" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="250" scrolling="no" width="300"></iframe></ins></ins></p>
+<h3>Popular Articles:</h3>
+<ul class="random-posts">
+<li><a href="http://www.hiteshagrawal.com/javascript/crossbrowser-java-plugin-detection-using-javascript" rel="bookmark" title="December 7, 2007">Java Plugin detection using JavaScript</a></li>
+<li><a href="http://www.hiteshagrawal.com/ajax/http-form-post-request-using-ajax-and-servlet" rel="bookmark" title="March 4, 2008">HTTP Form POST Request using AJAX and Servlet</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/url-connection-through-proxy-in-java" rel="bookmark" title="July 21, 2009">Remote URL Connection Through Proxy in Java</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/check-unread-emails-using-java" rel="bookmark" title="January 20, 2010">Reading New Emails from Java Applications</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/date-manipulation-in-java" rel="bookmark" title="May 2, 2008">Date Manipulation in JAVA</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/sending-emails-using-java" rel="bookmark" title="March 2, 2009">Sending Emails using Java</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/jsp-create-custom-tags" rel="bookmark" title="December 24, 2008">JSP – Create Custom Tags</a></li>
+<li><a href="http://www.hiteshagrawal.com/mysql/mysql-batch-insertupdate-in-java" rel="bookmark" title="March 2, 2009">MySql Batch Insert/Update in Java</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/java-excel-reading-excel-sheet-in-java" rel="bookmark" title="December 19, 2008">Reading Excel Sheet Documents in Java</a></li>
+<li><a href="http://www.hiteshagrawal.com/java/introduction-to-hibernate" rel="bookmark" title="October 28, 2010">Introduction to Hibernate</a></li>
+</ul>
+<p><!-- Random Posts took 789.632 ms --></p>
+
+<div class="sociable">
+<div class="sociable_tagline">
+<strong>Share and Enjoy:</strong>
+</div>
+<ul>
+	<li class="sociablefirst"><a rel="nofollow" target="_blank" href="http://www.printfriendly.com/print?url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;partner=sociable" title="Print"><img src="reading-pop3-mails-using-java_files/printfriendly.png" title="Print" alt="Print"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java&amp;bodytext=Java%20provides%20with%20set%20of%20API%20called%20JavaMail%20that%20allows%20you%20to%20connect%20to%20and%20read%20POP3%20Emails.%20This%20article%20will%20show%20you%20how%20we%20can%20read%20POP3%20Emails%20using%20Java.%0D%0A%0D%0A%0D%0Aimport%20javax.mail.AuthenticationFailedException%3B%0D%0Aimport%20javax.mail.Folder%3B%0D%0Aimp" title="Digg"><img src="reading-pop3-mails-using-java_files/digg.png" title="Digg" alt="Digg"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://delicious.com/post?url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java&amp;notes=Java%20provides%20with%20set%20of%20API%20called%20JavaMail%20that%20allows%20you%20to%20connect%20to%20and%20read%20POP3%20Emails.%20This%20article%20will%20show%20you%20how%20we%20can%20read%20POP3%20Emails%20using%20Java.%0D%0A%0D%0A%0D%0Aimport%20javax.mail.AuthenticationFailedException%3B%0D%0Aimport%20javax.mail.Folder%3B%0D%0Aimp" title="del.icio.us"><img src="reading-pop3-mails-using-java_files/delicious.png" title="del.icio.us" alt="del.icio.us"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;t=Reading%20POP3%20Mails%20Using%20Java" title="Facebook"><img src="reading-pop3-mails-using-java_files/facebook.png" title="Facebook" alt="Facebook"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java&amp;annotation=Java%20provides%20with%20set%20of%20API%20called%20JavaMail%20that%20allows%20you%20to%20connect%20to%20and%20read%20POP3%20Emails.%20This%20article%20will%20show%20you%20how%20we%20can%20read%20POP3%20Emails%20using%20Java.%0D%0A%0D%0A%0D%0Aimport%20javax.mail.AuthenticationFailedException%3B%0D%0Aimport%20javax.mail.Folder%3B%0D%0Aimp" title="Google Bookmarks"><img src="reading-pop3-mails-using-java_files/googlebookmark.png" title="Google Bookmarks" alt="Google Bookmarks"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.dzone.com/links/add.html?url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java" title="DZone"><img src="reading-pop3-mails-using-java_files/dzone.png" title="DZone" alt="DZone"></a></li>
+	<li><a rel="nofollow" target="_blank" href="mailto:?subject=Reading%20POP3%20Mails%20Using%20Java&amp;body=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java" title="email"><img src="reading-pop3-mails-using-java_files/email_link.png" title="email" alt="email"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.indianpad.com/submit.php?url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java" title="IndianPad"><img src="reading-pop3-mails-using-java_files/indianpad.png" title="IndianPad" alt="IndianPad"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java&amp;source=Techie+Zone+Software+Programming+and+Tutorials&amp;summary=Java%20provides%20with%20set%20of%20API%20called%20JavaMail%20that%20allows%20you%20to%20connect%20to%20and%20read%20POP3%20Emails.%20This%20article%20will%20show%20you%20how%20we%20can%20read%20POP3%20Emails%20using%20Java.%0D%0A%0D%0A%0D%0Aimport%20javax.mail.AuthenticationFailedException%3B%0D%0Aimport%20javax.mail.Folder%3B%0D%0Aimp" title="LinkedIn"><img src="reading-pop3-mails-using-java_files/linkedin.png" title="LinkedIn" alt="LinkedIn"></a></li>
+	<li><a rel="nofollow" target="_blank" href="https://favorites.live.com/quickadd.aspx?marklet=1&amp;url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java" title="Live"><img src="reading-pop3-mails-using-java_files/live.png" title="Live" alt="Live"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.myspace.com/Modules/PostTo/Pages/?u=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;t=Reading%20POP3%20Mails%20Using%20Java" title="MySpace"><img src="reading-pop3-mails-using-java_files/myspace.png" title="MySpace" alt="MySpace"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.netvibes.com/share?title=Reading%20POP3%20Mails%20Using%20Java&amp;url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java" title="Netvibes"><img src="reading-pop3-mails-using-java_files/netvibes.png" title="Netvibes" alt="Netvibes"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.hiteshagrawal.com/feed" title="RSS"><img src="reading-pop3-mails-using-java_files/rss.png" title="RSS" alt="RSS"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://technorati.com/faves?add=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java" title="Technorati"><img src="reading-pop3-mails-using-java_files/technorati.png" title="Technorati" alt="Technorati"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://bookmarks.yahoo.com/toolbar/savebm?u=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;t=Reading%20POP3%20Mails%20Using%20Java&amp;opener=bm&amp;ei=UTF-8&amp;d=Java%20provides%20with%20set%20of%20API%20called%20JavaMail%20that%20allows%20you%20to%20connect%20to%20and%20read%20POP3%20Emails.%20This%20article%20will%20show%20you%20how%20we%20can%20read%20POP3%20Emails%20using%20Java.%0D%0A%0D%0A%0D%0Aimport%20javax.mail.AuthenticationFailedException%3B%0D%0Aimport%20javax.mail.Folder%3B%0D%0Aimp" title="Yahoo! Bookmarks"><img src="reading-pop3-mails-using-java_files/yahoomyweb.png" title="Yahoo! Bookmarks" alt="Yahoo! Bookmarks"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://buzz.yahoo.com/submit/?submitUrl=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;submitHeadline=Reading%20POP3%20Mails%20Using%20Java&amp;submitSummary=Java%20provides%20with%20set%20of%20API%20called%20JavaMail%20that%20allows%20you%20to%20connect%20to%20and%20read%20POP3%20Emails.%20This%20article%20will%20show%20you%20how%20we%20can%20read%20POP3%20Emails%20using%20Java.%0D%0A%0D%0A%0D%0Aimport%20javax.mail.AuthenticationFailedException%3B%0D%0Aimport%20javax.mail.Folder%3B%0D%0Aimp&amp;submitCategory=science&amp;submitAssetType=text" title="Yahoo! Buzz"><img src="reading-pop3-mails-using-java_files/yahoobuzz.png" title="Yahoo! Buzz" alt="Yahoo! Buzz"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;title=Reading%20POP3%20Mails%20Using%20Java" title="Reddit"><img src="reading-pop3-mails-using-java_files/reddit.png" title="Reddit" alt="Reddit"></a></li>
+	<li><a rel="nofollow" href="javascript:AddToFavorites();" title="Add to favorites"><img src="reading-pop3-mails-using-java_files/addtofavorites.png" title="Add to favorites" alt="Add to favorites"></a></li>
+	<li><a rel="nofollow" target="_blank" href="http://www.printfriendly.com/print?url=http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java&amp;partner=sociable" title="PDF"><img src="reading-pop3-mails-using-java_files/pdf.png" title="PDF" alt="PDF"></a></li>
+	<li class="sociablelast"><a rel="nofollow" target="_blank" href="http://twitter.com/home?status=Reading%20POP3%20Mails%20Using%20Java%20-%20http%3A%2F%2Fwww.hiteshagrawal.com%2Fjava%2Freading-pop3-mails-using-java" title="Twitter"><img src="reading-pop3-mails-using-java_files/twitter.png" title="Twitter" alt="Twitter"></a></li>
+</ul>
+</div>
+                        <!-- google_ad_section_end -->
+			<div class="fixed"></div>
+		</div>
+<!-- google_ad_section_start-->
+		<div class="under">
+			<span class="categories">Categories: </span><span><a href="http://www.hiteshagrawal.com/category/java" title="View all posts in Java" rel="category tag">Java</a></span>			<span class="tags">Tags: </span><span><a href="http://www.hiteshagrawal.com/tag/java" rel="tag">Java</a></span>		</div>
+	</div>
+
+	<!-- related posts START -->
+		<!-- related posts END -->
+
+	<script type="text/javascript" src="reading-pop3-mails-using-java_files/comment.js"></script>
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);" onclick="MGJS.switchTab('thecomments,commentnavi', 'thetrackbacks', 'commenttab', 'curtab', 'trackbacktab', 'tab');">Comments (8)</a>
+		<a id="trackbacktab" class="tab" href="javascript:void(0);" onclick="MGJS.switchTab('thetrackbacks', 'thecomments,commentnavi', 'trackbacktab', 'curtab', 'commenttab', 'tab');">Trackbacks (1)</a>
+				<span class="addcomment"><a href="#respond">Leave a comment</a></span>
+				<span class="addtrackback"><a href="http://www.hiteshagrawal.com/java/reading-pop3-mails-using-java/trackback">Trackback</a></span>
+		<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+		<li class="comment regularcomment" id="comment-12020">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/5a59437749041f02d63d890db416d615.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<span id="commentauthor-12020">
+				
+				Kalyani Bhadekar
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				February 27th, 2009 at 03:50					 | <a href="#comment-12020">#1</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-12020', 'comment-12020', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-12020', 'comment-12020', 'commentbody-12020', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-12020">
+					<p>I tried using above prog with mail.jar, activation.jar, 
+mailapi.jar in my classpath. The prog got compiled successfully but 
+while running, I got the following as the stacktrace-<br>
+Not able to process the mail reading.<br>
+javax.mail.MessagingException: Connect failed;<br>
+  nested exception is:<br>
+	java.net.ConnectException: Connection refused: connect<br>
+	at com.sun.mail.pop3.POP3Store.protocolConnect(POP3Store.java:161)<br>
+	at javax.mail.Service.connect(Service.java:288)<br>
+	at javax.mail.Service.connect(Service.java:169)<br>
+	at com.javaMailSamples.ReadMailFromPOP3Server.processMail(ReadMailFromPOP3Server.java:50)<br>
+	at com.javaMailSamples.ReadMailFromPOP3Server.(ReadMailFromPOP3Server.java:22)<br>
+	at com.javaMailSamples.ReadMailFromPOP3Server.main(ReadMailFromPOP3Server.java:168)</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	<li class="comment regularcomment" id="comment-13202">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/10d76fe03c31da09f6adcf11ee2b2579.jpg" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<span id="commentauthor-13202">
+				
+				kundan
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				June 16th, 2009 at 05:44					 | <a href="#comment-13202">#2</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-13202', 'comment-13202', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-13202', 'comment-13202', 'commentbody-13202', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-13202">
+					<p>hi friend, found your codes quite useful…..thnx a lot 4 it…hey i
+ am trying mark messages read using pop3…is it possible…? i can create a
+ log file or somthing on client side….<br>
+                   Thanx in advance.<br>
+With Regards,<br>
+kundan</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	<li class="comment regularcomment" id="comment-13212">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/16472cb989516f6d19551df5acd378eb.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<a id="commentauthor-13212" class="url" href="http://www.watchyearoneonline.com/" rel="external nofollow">
+				
+				Watch Year One Online Free
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				June 20th, 2009 at 13:01					 | <a href="#comment-13212">#3</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-13212', 'comment-13212', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-13212', 'comment-13212', 'commentbody-13212', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-13212">
+					<p>The topic is quite hot on the Internet right now. What do you pay the most attention to when choosing what to write  ?<br>
+p.s. Year One is already on the Internet and you can watch it for free.</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	<li class="comment regularcomment" id="comment-13319">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/de387a0cc91922777e147a9adc3d444f.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<span id="commentauthor-13319">
+				
+				COnza
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				August 18th, 2009 at 02:22					 | <a href="#comment-13319">#4</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-13319', 'comment-13319', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-13319', 'comment-13319', 'commentbody-13319', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-13319">
+					<p>thanks dear ur code is soooo useful, bt how do u only read mails that are existing nt the new ones????????</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-13320">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/44c7c1770cd9ef4f1af5c6407590a44a.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<a id="commentauthor-13320" class="url" href="http://www.hiteshagrawal.com/" rel="external nofollow">
+				
+				Hitesh Agrawal
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				August 18th, 2009 at 02:40					 | <a href="#comment-13320">#5</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-13320', 'comment-13320', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-13320', 'comment-13320', 'commentbody-13320', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-13320">
+					<p>Hi,<br>
+With POP3 we cant check for new message, but we can check for new 
+message using IMAP Server. You can check the Connecting to IMAP using 
+Java code here: <a href="http://www.hiteshagrawal.com/java/reading-imap-server-emails-using-java" rel="nofollow">http://www.hiteshagrawal.com/java/reading-imap-server-emails-using-java</a></p>
+<p>Thanks,<br>
+Hitesh Agarwal</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+</ul>
+</li>
+	<li class="comment regularcomment" id="comment-17749">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/5ff0184fa2a27b0feb0d2cd0698d84ff.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<span id="commentauthor-17749">
+				
+				ranjith
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				January 23rd, 2010 at 12:14					 | <a href="#comment-17749">#6</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-17749', 'comment-17749', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-17749', 'comment-17749', 'commentbody-17749', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-17749">
+					<p>i have run the code<br>
+but its giving me the foll error<br>
+what should i write in the place of host name or IP</p>
+<p>C:Java Mail&gt;java readEmails<br>
+————–processing mails started—————–<br>
+getting the session for accessing email.<br>
+Not able to process the mail reading.<br>
+javax.mail.MessagingException: Connection timed out: connect;<br>
+  nested exception is:<br>
+        java.net.ConnectException: Connection timed out: connect<br>
+        at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:618)<br>
+        at javax.mail.Service.connect(Service.java:291)<br>
+        at javax.mail.Service.connect(Service.java:172)<br>
+        at readEmails.processMail(readEmails.java:47)<br>
+        at readEmails.(readEmails.java:19)<br>
+        at readEmails.main(readEmails.java:165)<br>
+Caused by: java.net.ConnectException: Connection timed out: connect<br>
+        at java.net.PlainSocketImpl.socketConnect(Native Method)<br>
+        at java.net.PlainSocketImpl.doConnect(Unknown Source)<br>
+        at java.net.PlainSocketImpl.connectToAddress(Unknown Source)<br>
+        at java.net.PlainSocketImpl.connect(Unknown Source)<br>
+        at java.net.SocksSocketImpl.connect(Unknown Source)<br>
+        at java.net.Socket.connect(Unknown Source)<br>
+        at java.net.Socket.connect(Unknown Source)<br>
+        at com.sun.mail.util.SocketFetcher.createSocket(SocketFetcher.java:284)<br>
+        at com.sun.mail.util.SocketFetcher.getSocket(SocketFetcher.java:227)<br>
+        at com.sun.mail.iap.Protocol.(Protocol.java:109)<br>
+        at com.sun.mail.imap.protocol.IMAPProtocol.(IMAPProtocol.java:104)</p>
+<p>        at com.sun.mail.imap.IMAPStore.protocolConnect(IMAPStore.java:585)<br>
+        … 5 more</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	<li class="comment regularcomment" id="comment-19472">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/fe7ce0672d09cd3a487d68080c9d7df1.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<span id="commentauthor-19472">
+				
+				Nelson
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				March 8th, 2010 at 14:52					 | <a href="#comment-19472">#7</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-19472', 'comment-19472', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-19472', 'comment-19472', 'commentbody-19472', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-19472">
+					<p><a href="#comment-17749" rel="nofollow">@ranjith </a><br>
+Hi ranjit you actually should put something like this :<br>
+   store.connect(“127.0.0.1″,”your_mail_user_name”,”your_mail_password”);<br>
+   store.connect(“localhost”,”your_mail_user_name”,”your_mail_password”);</p>
+<p>The IP number (something like 127.0.0.1) or the host name (like localhost ) where your email server is based.</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	<li class="comment regularcomment" id="comment-26711">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="reading-pop3-mails-using-java_files/8ba7671c70a4d802edc4dfd5525a4e27.png" class="avatar avatar-32 photo" height="32" width="32">			</div>
+			<div class="name">
+									<span id="commentauthor-26711">
+				
+				elango
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				August 19th, 2010 at 06:34					 | <a href="#comment-26711">#8</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-26711', 'comment-26711', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-26711', 'comment-26711', 'commentbody-26711', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-26711">
+					<p>even when i gave hostname also it shows same errors as ranjith said….<br>
+for my gmail acct i gave “smtp.gmail.com” as host name and my user name and password… same error repeated….</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+			<ol id="thetrackbacks">
+												<li class="trackback">
+						<div class="date">
+							April 3rd, 2010 at 04:56							 | <a href="#comment-20405">#1</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://starttags.com/tags/java-java">
+								java java							</a>
+						</div>
+					</li>
+				
+					</ol>
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+	<form action="http://www.hiteshagrawal.com/wp-comments-post.php" method="post" id="commentform">
+	<div id="respond">
+
+					
+			<div id="author_info">
+				<div class="row">
+					<input name="author" id="author" class="textfield" size="24" tabindex="1" type="text">
+					<label for="author" class="small">Name (required)</label>
+				</div>
+				<div class="row">
+					<input name="email" id="email" class="textfield" size="24" tabindex="2" type="text">
+					<label for="email" class="small">E-Mail (will not be published) (required)</label>
+				</div>
+				<div class="row">
+					<input name="url" id="url" class="textfield" size="24" tabindex="3" type="text">
+					<label for="url" class="small">Website</label>
+				</div>
+			</div>
+
+			
+		
+		<!-- comment input -->
+		<div class="row">
+			<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+		</div>
+
+		<!-- comment submit and rss -->
+		<div id="submitbox">
+			<a class="feed" href="http://www.hiteshagrawal.com/comments/feed">Subscribe to comments feed</a>
+			<div class="submitbutton">
+				
+			</div>
+						<input name="comment_post_ID" value="313" type="hidden">
+			<div class="fixed"></div>
+		</div>
+
+	</div>
+			<script type="text/javascript">
+				var RecaptchaOptions = { theme : 'red', lang : 'en' , tabindex : 5 };
+		</script><script type="text/javascript" src="reading-pop3-mails-using-java_files/challenge"></script><script type="text/javascript" src="reading-pop3-mails-using-java_files/recaptcha.js"></script><div class=" recaptcha_nothad_incorrect_sol recaptcha_isnot_showing_audio" id="recaptcha_widget_div" style=""></div><script>Recaptcha.widget = Recaptcha.$("recaptcha_widget_div"); Recaptcha.challenge_callback();</script>
+
+<noscript>
+<iframe src="http://api.recaptcha.net/noscript?k=6LdnCL0SAAAAAKz5V0tC-EpNCBY_ckzegraE3tvF" height="300" width="500" frameborder="0"></iframe><br/>
+<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+</noscript>				<div id="recaptcha-submit-btn-area"><input name="submit" id="submit" class="button" tabindex="6" value="Submit Comment (Ctrl+Enter)" type="submit"></div> 
+				<script type="text/javascript">
+				var sub = document.getElementById('submit');
+				sub.parentNode.removeChild(sub);
+				document.getElementById('recaptcha-submit-btn-area').appendChild (sub);
+				document.getElementById('submit').tabIndex = 6;
+				if ( typeof _recaptcha_wordpress_savedcomment != 'undefined') {
+						document.getElementById('comment').value = _recaptcha_wordpress_savedcomment;
+				}
+				document.getElementById('recaptcha_table').style.direction = 'ltr';
+				</script>
+				<noscript>
+				 <style type='text/css'>#submit {display:none;}</style>
+				 <input name="submit" type="submit" id="submit-alt" tabindex="6" value="Submit Comment"/> 
+				</noscript>	</form>
+
+			<script type="text/javascript">MGJS.loadCommentShortcut();</script>
+	
+
+	<div id="postnavi">
+		<span class="prev"><a href="http://www.hiteshagrawal.com/java/reading-imap-server-emails-using-java" rel="next">Reading IMAP Server Emails Using Java</a></span>
+		<span class="next"><a href="http://www.hiteshagrawal.com/java/java-excel-reading-excel-sheet-in-java" rel="prev">Reading Excel Sheet Documents in Java</a></span>
+		<div class="fixed"></div>
+	</div>
+
+
+	</div>
+	<!-- main END -->
+
+	
+<!-- sidebar START -->
+<div id="sidebar">
+<!-- google_ad_section_start(weight=ignore) -->
+<!-- sidebar north START -->
+<div id="northsidebar" class="sidebar">
+
+	<!-- feeds -->
+	<div class="widget widget_feeds">
+		<div class="content">
+			<div id="subscribe"><a rel="external nofollow" id="feedrss" title="Subscribe to this blog..." href="http://feeds.feedburner.com/hiteshagrawal/RwlS"><abbr title="Really Simple Syndication">RSS</abbr></a></div>
+							<a rel="external nofollow" id="feedemail" title="Subscribe to this blog via email..." href="http://feedburner.google.com/fb/a/mailverify?uri=hiteshagrawal/RwlS">Email feed</a>
+							<a id="followme" title="Follow me!" href="http://twitter.com/techiezones/">Twitter</a>
+						<div class="fixed"></div>
+		</div>
+	</div>
+
+	<!-- showcase -->
+			<div class="widget">
+						<div class="content">
+				<p><a href="http://feeds.feedburner.com/hiteshagrawal/RwlS"><img src="reading-pop3-mails-using-java_files/RwlS.gif" style="border: 0pt none;" alt="" height="26" width="88"></a></p>
+<p><iframe src="reading-pop3-mails-using-java_files/rate.htm" frameborder="0" height="75" scrolling="no" width="150"></iframe></p>
+			</div>
+		</div>
+	
+<div id="linkcat-51" class="widget widget_links"><h3>Java Tutorial</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.hiteshagrawal.com/tag/java" title="Software Programming and Web Development using Core Java, J2EE, JSP and Servlets" target="_blank">Java Tutorials</a></li>
+<li><a href="http://www.hiteshagrawal.com/" title="Learn Object Oriented Programming on PHP">PHP OOPS</a></li>
+<li><a href="http://www.hiteshagrawal.com/php-tutorials" title="Web Programming using PHP and PHP 5">PHP Tutorials</a></li>
+
+	</ul>
+</div>
+<div id="global-translator" class="widget widget_global_translator"><h3>Translator</h3>
+<!--FLAG_BAR_BEGIN--><table border="0"><tbody><tr><td><a id="flag_en" href="http://www.hiteshagrawal.com/java/reading-pop3-mails-using-java" hreflang="en"><img id="flag_img_en" src="reading-pop3-mails-using-java_files/flag_en.png" alt="English flag" title="English" border="0" height="11px" width="16px"></a></td><td><a id="flag_it" href="http://www.hiteshagrawal.com/it/java/reading-pop3-mails-using-java" hreflang="it"><img id="flag_img_it" src="reading-pop3-mails-using-java_files/flag_it.png" alt="Italian flag" title="Italian" border="0" height="11px" width="16px"></a></td><td><a id="flag_pt" href="http://www.hiteshagrawal.com/pt/java/reading-pop3-mails-using-java" hreflang="pt"><img id="flag_img_pt" src="reading-pop3-mails-using-java_files/flag_pt.png" alt="Portuguese flag" title="Portuguese" border="0" height="11px" width="16px"></a></td><td><a id="flag_de" href="http://www.hiteshagrawal.com/de/java/reading-pop3-mails-using-java" hreflang="de"><img id="flag_img_de" src="reading-pop3-mails-using-java_files/flag_de.png" alt="German flag" title="German" border="0" height="11px" width="16px"></a></td><td><a id="flag_fr" href="http://www.hiteshagrawal.com/fr/java/reading-pop3-mails-using-java" hreflang="fr"><img id="flag_img_fr" src="reading-pop3-mails-using-java_files/flag_fr.png" alt="French flag" title="French" border="0" height="11px" width="16px"></a></td><td><a id="flag_es" href="http://www.hiteshagrawal.com/es/java/reading-pop3-mails-using-java" hreflang="es"><img id="flag_img_es" src="reading-pop3-mails-using-java_files/flag_es.png" alt="Spanish flag" title="Spanish" border="0" height="11px" width="16px"></a></td><td><a id="flag_ru" href="http://www.hiteshagrawal.com/ru/java/reading-pop3-mails-using-java" hreflang="ru"><img id="flag_img_ru" src="reading-pop3-mails-using-java_files/flag_ru.png" alt="Russian flag" title="Russian" border="0" height="11px" width="16px"></a></td><td><a id="flag_nl" href="http://www.hiteshagrawal.com/nl/java/reading-pop3-mails-using-java" hreflang="nl"><img id="flag_img_nl" src="reading-pop3-mails-using-java_files/flag_nl.png" alt="Dutch flag" title="Dutch" border="0" height="11px" width="16px"></a></td><td><a id="flag_bg" href="http://www.hiteshagrawal.com/bg/java/reading-pop3-mails-using-java" hreflang="bg"><img id="flag_img_bg" src="reading-pop3-mails-using-java_files/flag_bg.png" alt="Bulgarian flag" title="Bulgarian" border="0" height="11px" width="16px"></a></td><td><a id="flag_cs" href="http://www.hiteshagrawal.com/cs/java/reading-pop3-mails-using-java" hreflang="cs"><img id="flag_img_cs" src="reading-pop3-mails-using-java_files/flag_cs.png" alt="Czech flag" title="Czech" border="0" height="11px" width="16px"></a></td><td><a id="flag_hi" href="http://www.hiteshagrawal.com/hi/java/reading-pop3-mails-using-java" hreflang="hi"><img id="flag_img_hi" src="reading-pop3-mails-using-java_files/flag_hi.png" alt="Hindi flag" title="Hindi" border="0" height="11px" width="16px"></a></td><td><a id="flag_sv" href="http://www.hiteshagrawal.com/sv/java/reading-pop3-mails-using-java" hreflang="sv"><img id="flag_img_sv" src="reading-pop3-mails-using-java_files/flag_sv.png" alt="Swedish flag" title="Swedish" border="0" height="11px" width="16px"></a></td><td><a id="flag_uk" href="http://www.hiteshagrawal.com/uk/java/reading-pop3-mails-using-java" hreflang="uk"><img id="flag_img_uk" src="reading-pop3-mails-using-java_files/flag_uk.png" alt="Ukrainian flag" title="Ukrainian" border="0" height="11px" width="16px"></a></td><td><a id="flag_vi" href="http://www.hiteshagrawal.com/vi/java/reading-pop3-mails-using-java" hreflang="vi"><img id="flag_img_vi" src="reading-pop3-mails-using-java_files/flag_vi.png" alt="Vietnamese flag" title="Vietnamese" border="0" height="11px" width="16px"></a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td colspan="42"></td></tr></tbody></table><!--FLAG_BAR_END-->
+</div><div id="text-112736862" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "pub-9693430925007646";
+/* 250x250, created 28/08/10 */
+google_ad_slot = "3725602702";
+google_ad_width = 250;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/show_ads.js">
+</script><ins style="display: inline-table; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 250px;"><ins id="aswift_3_anchor" style="display: block; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 250px;"><iframe allowtransparency="true" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+='.call';setTimeout(h,0)}else if(h.match){i+='.nav';w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" vspace="0" id="aswift_3" name="aswift_3" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="250" scrolling="no" width="250"></iframe></ins></ins></div>
+		</div></div>
+<!-- sidebar north END -->
+
+<div id="centersidebar">
+
+	<!-- sidebar east START -->
+	<div id="eastsidebar" class="sidebar">
+	
+		
+		</div>
+	<!-- sidebar east END -->
+
+	<!-- sidebar west START -->
+	<div id="westsidebar" class="sidebar">
+	
+		<!-- blogroll -->
+		
+		</div>
+	<!-- sidebar west END -->
+	<div class="fixed"></div>
+</div>
+
+<!-- sidebar south START -->
+<div id="southsidebar" class="sidebar">
+<div id="tag_cloud-2" class="widget widget_tag_cloud"><h3>Articles</h3><div class="tagcloud"><a href="http://www.hiteshagrawal.com/tag/action-script" class="tag-link-38" title="8 topics" style="font-size: 15.0543pt;">Action Script</a>
+<a href="http://www.hiteshagrawal.com/tag/flash" class="tag-link-10" title="5 topics" style="font-size: 13.2093pt;">Adobe Flash</a>
+<a href="http://www.hiteshagrawal.com/tag/ajax" class="tag-link-6" title="13 topics" style="font-size: 17.2248pt;">AJAX</a>
+<a href="http://www.hiteshagrawal.com/tag/amazon-s3-services" class="tag-link-42" title="4 topics" style="font-size: 12.3411pt;">Amazon S3 Services</a>
+<a href="http://www.hiteshagrawal.com/tag/apache-tomcat" class="tag-link-56" title="5 topics" style="font-size: 13.2093pt;">Apache Tomcat</a>
+<a href="http://www.hiteshagrawal.com/tag/apache-web-server" class="tag-link-47" title="2 topics" style="font-size: 9.95349pt;">Apache Web Server</a>
+<a href="http://www.hiteshagrawal.com/tag/career" class="tag-link-5" title="7 topics" style="font-size: 14.5116pt;">Career</a>
+<a href="http://www.hiteshagrawal.com/tag/c-tutorial" class="tag-link-54" title="2 topics" style="font-size: 9.95349pt;">C Tutorial</a>
+<a href="http://www.hiteshagrawal.com/tag/events" class="tag-link-18" title="1 topic" style="font-size: 8pt;">Events</a>
+<a href="http://www.hiteshagrawal.com/tag/ffmpeg" class="tag-link-4" title="4 topics" style="font-size: 12.3411pt;">FFMPEG</a>
+<a href="http://www.hiteshagrawal.com/tag/flash-media-server" class="tag-link-20" title="6 topics" style="font-size: 13.969pt;">Flash Media Server</a>
+<a href="http://www.hiteshagrawal.com/tag/google-gadgets" class="tag-link-50" title="1 topic" style="font-size: 8pt;">Google Gadgets</a>
+<a href="http://www.hiteshagrawal.com/tag/hibernate" class="tag-link-62" title="2 topics" style="font-size: 9.95349pt;">hibernate</a>
+<a href="http://www.hiteshagrawal.com/tag/java" class="tag-link-48" title="32 topics" style="font-size: 21.2403pt;">Java</a>
+<a href="http://www.hiteshagrawal.com/tag/javascript" class="tag-link-12" title="33 topics" style="font-size: 21.3488pt;">Javascript</a>
+<a href="http://www.hiteshagrawal.com/tag/json" class="tag-link-52" title="2 topics" style="font-size: 9.95349pt;">JSON</a>
+<a href="http://www.hiteshagrawal.com/tag/linux" class="tag-link-46" title="9 topics" style="font-size: 15.5969pt;">Linux</a>
+<a href="http://www.hiteshagrawal.com/tag/mybatis" class="tag-link-63" title="1 topic" style="font-size: 8pt;">mybatis</a>
+<a href="http://www.hiteshagrawal.com/tag/mysql" class="tag-link-11" title="11 topics" style="font-size: 16.4651pt;">Mysql</a>
+<a href="http://www.hiteshagrawal.com/tag/oops-in-php5" class="tag-link-60" title="26 topics" style="font-size: 20.2636pt;">oops in php5</a>
+<a href="http://www.hiteshagrawal.com/tag/php" class="tag-link-19" title="37 topics" style="font-size: 21.8915pt;">PHP</a>
+<a href="http://www.hiteshagrawal.com/tag/php5" class="tag-link-27" title="38 topics" style="font-size: 22pt;">PHP5</a>
+<a href="http://www.hiteshagrawal.com/tag/programming-logic" class="tag-link-41" title="1 topic" style="font-size: 8pt;">Programming Logic</a>
+<a href="http://www.hiteshagrawal.com/tag/puzzles" class="tag-link-7" title="1 topic" style="font-size: 8pt;">Puzzles</a>
+<a href="http://www.hiteshagrawal.com/tag/sybase-2" class="tag-link-65" title="1 topic" style="font-size: 8pt;">sybase</a>
+<a href="http://www.hiteshagrawal.com/tag/uml" class="tag-link-58" title="9 topics" style="font-size: 15.5969pt;">UML</a>
+<a href="http://www.hiteshagrawal.com/tag/wap" class="tag-link-61" title="2 topics" style="font-size: 9.95349pt;">WAP</a>
+<a href="http://www.hiteshagrawal.com/tag/wordpress" class="tag-link-23" title="1 topic" style="font-size: 8pt;">Wordpress</a>
+<a href="http://www.hiteshagrawal.com/tag/xml" class="tag-link-25" title="6 topics" style="font-size: 13.969pt;">XML</a></div>
+</div><div id="text-112736864" class="widget widget_text">			<div class="textwidget"><script type="text/javascript" language="JavaScript" src="reading-pop3-mails-using-java_files/a.htm"></script><div id="TwitterCounter"><a href="http://twittercounter.com/techiezones" title="TwitterCounter for @techiezones" target="_blank"><img src="reading-pop3-mails-using-java_files/index_bird.png" style="border: medium none;" alt="TwitterCounter for @techiezones" height="90" width="149"></a></div><noscript><a href="http://twittercounter.com/techiezones">Hitesh Agarwal on Twitter Counter.com</a></noscript>
+<br>
+<div style="font-size: 8px;"><a href="http://www.teachstreet.com/programming/classes/303"><img alt="Find online and local Programming Classes" src="reading-pop3-mails-using-java_files/ts-featuredblog-120x60.png" height="60" width="120"></a><br><a href="http://www.teachstreet.com/programming/classes/303" style="font-size: 8px;">Programming Classes</a> | <a href="http://www.teachstreet.com/articles/signup" style="font-size: 8px;">Add your site</a></div>
+</div>
+		</div></div>
+<!-- sidebar south END -->
+
+</div>
+<!-- google_ad_section_end -->
+<!-- sidebar END -->
+	<div class="fixed"></div>
+</div>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="#" onclick="MGJS.goTop();return false;">Top</a>
+	<a id="powered" href="http://wordpress.org/">WordPress</a>
+	<div id="copyright">
+		Copyright © 2007-2011 Techie Zone	</div>
+	<div id="themeinfo">
+		Theme by <a href="http://www.neoease.com/">NeoEase</a>. Valid <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">CSS 3</a>.	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/jquery.js"></script>
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/scripts.js"></script>
+<script type="text/javascript" src="reading-pop3-mails-using-java_files/addtofavorites.js"></script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="rate_data/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2608675-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<div style="display: none;">
+<a href="http://www.codeproject.com/script/Articles/BlogFeedList.aspx?amid=hiteshRocks" rel="tag" style="display: none;">CodeProject</a>
+</div>
+<!-- google_ad_section_end -->
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Minified using disk
+Page Caching using disk (enhanced)
+Database Caching 7/33 queries in 0.238 seconds using disk
+Object Caching 1281/1334 objects using disk
+
+Served from: www.hiteshagrawal.com @ 2011-03-04 20:13:35 --><script src="reading-pop3-mails-using-java_files/predictadme.js" type="text/javascript"></script></body></html>

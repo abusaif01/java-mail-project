@@ -1,0 +1,18 @@
+.ratingblock {
+	display:block;	
+	xborder:1px solid #000;
+	margin: 0px 0px 0px 10px;
+	xtext-align:center;
+	width:150px;
+	}
+
+	
+.unit-rating { /* the UL */
+	list-style:none;
+	margin: 10px -2px 3px 0px;
+	padding:0px;
+	height: 16px;
+	position: relative;
+	xborder:1px solid #000;
+	background: url('http://www.blogadda.com/images/rating/starrating.gif') top left repeat-x;		
+	}

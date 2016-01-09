@@ -1,0 +1,1581 @@
+<html>
+
+<head>
+<title>Read Multipart mail using Java Mail</title>
+<Meta name="Description" content="New to java – Learn java technology, as you want with numerous working examples, articles and tutorials. New to java tutorial will illustrate you how to start learning java to make your carrier in Java technology.">
+
+<Meta name="Keywords" content="New to java,new java technology,new to java examples,learn java,java message services,java server pages and new to java tutorials">
+
+<LINK href="../roseindia.css" title="compact" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<!-- Top -->
+
+<link type="text/css" href="/d1/jquery-ui-1.7.2/css/themes/sunny/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="/d1/jquery-ui-1.7.2/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/d1/jquery-ui-1.7.2/js/jquery-ui-1.7.2.custom.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// Tabs
+		$('#tabs').tabs();
+	});
+</script>
+
+<style type="text/css">
+	/*demo page css*/
+	.tabs{ font: 62.5% "Trebuchet MS", sans-serif; margin: 2px;}
+	.demoHeaders { margin-top: 2em; }
+	#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+	#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+	ul#icons {margin: 0; padding: 0;}
+	ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+	ul#icons span.ui-icon {float: left; margin: 0 4px;}
+
+	#tabs li {
+    display: inline;
+   }
+
+</style>
+
+<div id="container">
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0" style="border-top-WIDTH:medium; border-top-color:#FF6600; border-top-style:solid; ">
+  <tr>
+
+    <td valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td valign="top" class="top_box_bg"><table width="100%"  border="0" cellspacing="0" cellpadding="0" >
+              <tr>
+                <td valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                    <tr valign="top">
+                      <td width="26%" height="74" valign="top"><span align="left"><a href="http://www.roseindia.net/"><img src="http://www.roseindia.net/images/logo.gif" width="231" height="60" vspace="7" border="0" align="middle"></a></span></td>
+                      <td valign="top">
+							<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+                          <tr>
+                            <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr valign="top">
+                                  <td  valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                                      <tr>
+                                        <td width="100%" valign="top">
+
+<script type="text/javascript"><!--
+   e9 = new Object();
+   e9.size = "728x90,468x60";
+   e9.noAd = 1;
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/RoseIndianet/ROS/tags.js"></script>
+
+
+<!--Ads Here-->
+
+
+
+										</td>
+                                            </tr>
+
+                                        </table></td>
+                                      </tr>
+
+                                  </table></td>
+                                </tr>
+                            </table></td>
+                          </tr>
+
+                      </table></td>
+                    </tr>
+
+      <tr>
+        <td colspan="2" align="left" valign="middle" class="m-bg">
+<div class="pagination">
+<div class="pagination">
+		<a href="/java/"><span class="current">Java</span></a>|
+				<a href="/frameworks/">Frameworks</a>|
+				<a href="/databases/">Databases</a>|
+				<a href="/technology/">Technology</a>|
+				<a href="/webdevelopment/">Development</a>|
+				<a href="/testtools/">Build/Test tools</a>|
+				<a href="/os/">OS</a>|
+				<a href="/servers/">Servers</a>|
+				<a href="/php/">PHP</a>|
+				<a href="/books/ebooks/">Books</a>|
+				<a href="/tutorials/">More</a>|
+		<a href="/whatsnew/">What's New?</a>
+</div>
+</div>
+		</td>
+      </tr>
+
+      <tr>
+        <td height="25" colspan="2" align="left" valign="middle">
+		<span class="dm" style="padding-left:5px;">
+
+		<a href="/java/" style="color:#000080">Core Java</a>|
+				<a href="/jsp/" style="color:#000080">JSP</a>|
+				<a href="/servlets/" style="color:#000080">Servlets</a>|
+				<a href="/xml/" style="color:#000080">XML</a>|
+				<a href="/ejb/" style="color:#000080">EJB</a>|
+				<a href="/java/jee5/" style="color:#000080">JEE5</a>|
+				<a href="/webservices/" style="color:#000080">Web Services</a>|
+				<a href="/j2me/" style="color:#000080">J2ME</a>|
+				<a href="/help/java/" style="color:#000080">Glossary</a>|
+		
+
+<a href="/answers/questions/" style="color:#000080">Questions?</a> | <a href="/softwaredevelopment/" style="color:#000080">Software Development</a>
+
+
+		</span>
+
+		</td>
+
+      </tr>
+
+
+                </table></td>
+
+              </tr>
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+		<table border="0" width="100%" cellspacing="0" cellpadding="0">
+
+
+		<tr>
+			<td class="border">
+				<table width="98%" align="center" border="0" style="background-color: #FFFFCC;">
+				  <tr>
+					<td width="5%">&nbsp;</td>
+					<td width="10%"><img src="/images/search-icon.jpg" width="63" height="51" align="center" /></td>
+					<td width="60%" valign="middle" align="left">
+
+
+
+
+								<form action="http://www.roseindia.net/customsearch/search.shtml" id="cse-search-box">
+								  <div>
+									<b>Search</b>&nbsp;<input type="hidden" name="cx" value="partner-pub-0714075272818912:351fen-pwln" />
+									<input type="hidden" name="cof" value="FORID:10" />
+									<input type="text" name="q" size="60" />
+									<input type="submit" name="sa" value="Search" />
+
+								  </div>
+								</form>
+								<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+
+
+
+					</td>
+					<td width="25%" align="center">
+
+
+<a href="http://www.roseindia.net/services/iphone/apps/iphone-baby-name-app.shtml"><img src="/services/iphone/apps/Icon.png" border="0"><br>iPhone Baby Names Application</a>
+					</td>
+				  </tr>
+				</table>
+			</td>
+		</tr>
+
+
+
+
+		<tr>
+			<td align="left" valign="top" >
+			<h1>Read Multipart mail using Java Mail</h1>
+			</td>
+		</tr>
+
+
+
+		<tr>
+			<td align="left" valign="top" style="background-color: #C8E0F0;">
+
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-0714075272818912";
+/* 728x15, created 1/29/10 728x90-Top-Link- 1 */
+google_ad_slot = "5853737025";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+			</td>
+		</tr>
+
+
+
+	    <tr>
+		<td align="left"  valign="middle">
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+ <td width="120" valign="middle">
+<img src="/javamail/images/Read-Multipart-mail.jpg">
+</td>
+
+<td>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-0714075272818912";
+/* 728x90, created 1/29/10 - 728x90-Top- 1 */
+google_ad_slot = "2288492206";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</td>
+</tr>
+</table>
+
+
+		</td>
+		</tr>
+
+		<tr>
+			<td align="left" valign="top" >
+				<font size="2">This Example shows you how to read a multipart message using javamail api.</font>
+			</td>
+		</tr>
+
+
+
+
+		</table>
+
+
+
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td style="width: 5px" valign="top">
+
+
+
+     </td>
+     <td valign="top" width="620">
+
+<!-- google_ad_section_start -->
+
+
+
+
+
+<!-- Top -->
+<div align="center">
+  <center>
+  <table width="98%">
+  <tr>
+    <td width="100%" align="LEFT"> 
+	
+<h1><font color="#000080">Read Multipart mail using Java Mail</font></h1>
+
+<div class="adsBelowHeadingNormal">
+<script type="text/javascript"><!--
+google_ad_client = "pub-0714075272818912";
+/* 336x280, created 2/11/08 LeftNewAds */
+google_ad_slot = "1009602866";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</div>
+
+
+      <p align="center">
+      <a href="SendMultipartMail.shtml"><img src="../images/previous.gif" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;<a href="index.shtml"><img src="../images/bt_home.gif" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="SendAttachment.shtml"><img src="../images/next.gif" border="0"></a></p>
+
+
+<p>This Example shows you how to read a multipart message using javamail
+api. When we read a multipart mail firstly create a Multipart class object.
+<p>These days&nbsp; Multipart mail is used to compose emails with attachment.&nbsp; 
+In the email you can attach images, zip files, xls, doc etc.. It allows you to 
+create nicely design emails.<p>Java Mail API also provides classes to create, 
+send and read the Multipart message. If you have given a task to create emails 
+with attachment in Java technologies, then you can use the Java Mail api to 
+accomplish your task.<p><strong>Using the Multipart Class</strong><p>Following 
+code snippet shows how you can use the Multipart class. You have to create the 
+object of Multipart class and then you can get the body part and compose or read 
+your email.<p><font color="#000080"><b>Multipart multipart = (Multipart) msg[i].getContent();</b>After that create BodyPart object <b>BodyPart bodyPart = multipart.getBodyPart(x);</b></font></p>
+<p><font color="#000080">And then read bodyPart content using getContent() method.</font></p>
+<p><font color="#000080"><b>ReadMultipartMail.java</b></font></p>
+<div align="left" class="java">
+  <table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffcc">
+    <tr>
+      <!-- start source code -->
+      <td nowrap="nowrap" valign="top" align="left"><code> <font color="#ffffff"></font><br />
+            <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.*;</font><br />
+            <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.activation.DataHandler;</font><br />
+            <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.mail.*;</font><br />
+            <font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">javax.mail.internet.*;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">ReadMultipartMail&nbsp;</font><font color="#000000">{</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">main</font><font color="#000000">(</font><font color="#000000">String&nbsp;args</font><font color="#000000">[])&nbsp;</font><font color="#7f0055"><b>throws&nbsp;</b></font><font color="#000000">Exception&nbsp;</font><font color="#000000">{</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;host&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;192.168.10.205&#34;</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;username&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;komal&#34;</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;passwoed&nbsp;=&nbsp;</font><font color="#2a00ff">&#34;komal&#34;</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Properties&nbsp;properties&nbsp;=&nbsp;System.getProperties</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Session&nbsp;session&nbsp;=&nbsp;Session.getDefaultInstance</font><font color="#000000">(</font><font color="#000000">properties</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Store&nbsp;store&nbsp;=&nbsp;session.getStore</font><font color="#000000">(</font><font color="#2a00ff">&#34;pop3&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">store.connect</font><font color="#000000">(</font><font color="#000000">host,&nbsp;username,&nbsp;passwoed</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Folder&nbsp;folder&nbsp;=&nbsp;store.getFolder</font><font color="#000000">(</font><font color="#2a00ff">&#34;inbox&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">!folder.exists</font><font color="#000000">())&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;No&nbsp;INBOX...&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.exit</font><font color="#000000">(</font><font color="#990000">0</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">folder.open</font><font color="#000000">(</font><font color="#000000">Folder.READ_WRITE</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Message</font><font color="#000000">[]&nbsp;</font><font color="#000000">msg&nbsp;=&nbsp;folder.getMessages</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">i&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;i&nbsp;&lt;&nbsp;msg.length;&nbsp;i++</font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;------------&nbsp;Message&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#000000">(</font><font color="#000000">i&nbsp;+&nbsp;</font><font color="#990000">1</font><font color="#000000">)&nbsp;</font><font color="#000000">+&nbsp;</font><font color="#2a00ff">&#34;&nbsp;------------&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;from&nbsp;=&nbsp;InternetAddress.toString</font><font color="#000000">(</font><font color="#000000">msg</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getFrom</font><font color="#000000">())</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">from&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;From:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;from</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;replyTo&nbsp;=&nbsp;InternetAddress.toString</font><font color="#000000">(</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">msg</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getReplyTo</font><font color="#000000">())</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">replyTo&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;Reply-to:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;replyTo</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;to&nbsp;=&nbsp;InternetAddress.toString</font><font color="#000000">(</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">msg</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getRecipients</font><font color="#000000">(</font><font color="#000000">Message.RecipientType.TO</font><font color="#000000">))</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">to&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;To:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;to</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;subject&nbsp;=&nbsp;msg</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getSubject</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">subject&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;Subject:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;subject</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Date&nbsp;sent&nbsp;=&nbsp;msg</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getSentDate</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">sent&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;Sent:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;sent</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;Message&nbsp;:&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">Multipart&nbsp;multipart&nbsp;=&nbsp;</font><font color="#000000">(</font><font color="#000000">Multipart</font><font color="#000000">)&nbsp;</font><font color="#000000">msg</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font><font color="#000000">.getContent</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>for&nbsp;</b></font><font color="#000000">(</font><font color="#7f0055"><b>int&nbsp;</b></font><font color="#000000">x&nbsp;=&nbsp;</font><font color="#990000">0</font><font color="#000000">;&nbsp;x&nbsp;&lt;&nbsp;multipart.getCount</font><font color="#000000">()</font><font color="#000000">;&nbsp;x++</font><font color="#000000">)&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">BodyPart&nbsp;bodyPart&nbsp;=&nbsp;multipart.getBodyPart</font><font color="#000000">(</font><font color="#000000">x</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">String&nbsp;disposition&nbsp;=&nbsp;bodyPart.getDisposition</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">disposition&nbsp;!=&nbsp;</font><font color="#7f0055"><b>null&nbsp;</b></font><font color="#000000">&amp;&amp;&nbsp;</font><font color="#000000">(</font><font color="#000000">disposition.equals</font><font color="#000000">(</font><font color="#000000">BodyPart.ATTACHMENT</font><font color="#000000">)))&nbsp;{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;Mail&nbsp;have&nbsp;some&nbsp;attachment&nbsp;:&nbsp;&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">DataHandler&nbsp;handler&nbsp;=&nbsp;bodyPart.getDataHandler</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#2a00ff">&#34;file&nbsp;name&nbsp;:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;handler.getName</font><font color="#000000">())</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}&nbsp;</font><font color="#7f0055"><b>else&nbsp;</b></font><font color="#000000">{</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">(</font><font color="#000000">bodyPart.getContent</font><font color="#000000">())</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">System.out.println</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">folder.close</font><font color="#000000">(</font><font color="#7f0055"><b>true</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">store.close</font><font color="#000000">()</font><font color="#000000">;</font><br />
+            <font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+            <font color="#000000">}</font></code> </td>
+      <!-- end source code -->
+    </tr>
+  </table>
+</div>
+<p><font color="#000080"><b>Output :</b></font></p>
+<div align="left" class="java">
+  <table border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffcc">
+    <tr>
+      <!-- start source code -->
+      <td nowrap="nowrap" valign="top" align="left"><code> <font color="#000000">------------&nbsp;Message&nbsp;</font><font color="#990000">1&nbsp;</font><font color="#000000">------------</font><br />
+            <font color="#000000">From:&nbsp;test</font><font color="#646464">@localhost</font><br />
+            <font color="#000000">Reply-to:&nbsp;test</font><font color="#646464">@localhost</font><br />
+            <font color="#000000">To:&nbsp;komal</font><font color="#646464">@localhost</font><br />
+            <font color="#000000">Subject:&nbsp;MultiPart&nbsp;Mail</font><br />
+            <font color="#000000">Sent:&nbsp;Fri&nbsp;Jul&nbsp;</font><font color="#990000">18&nbsp;18</font><font color="#000000">:</font><font color="#990000">21</font><font color="#000000">:</font><font color="#990000">42&nbsp;</font><font color="#000000">IST&nbsp;</font><font color="#990000">2008</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#000000">Message&nbsp;:&nbsp;</font><br />
+            <font color="#000000">This&nbsp;is&nbsp;multipart&nbsp;mail&nbsp;and&nbsp;u&nbsp;read&nbsp;part1......</font><br />
+            <font color="#000000">This&nbsp;is&nbsp;multipart&nbsp;mail&nbsp;and&nbsp;u&nbsp;read&nbsp;part2......</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#000000">------------&nbsp;Message&nbsp;</font><font color="#990000">2&nbsp;</font><font color="#000000">------------</font><br />
+            <font color="#000000">From:&nbsp;test</font><font color="#646464">@localhost</font><br />
+            <font color="#000000">Reply-to:&nbsp;test</font><font color="#646464">@localhost</font><br />
+            <font color="#000000">To:&nbsp;komal</font><font color="#646464">@localhost</font><br />
+            <font color="#000000">Subject:&nbsp;JavaMail&nbsp;Attachment</font><br />
+            <font color="#000000">Sent:&nbsp;Fri&nbsp;Jul&nbsp;</font><font color="#990000">18&nbsp;19</font><font color="#000000">:</font><font color="#990000">03</font><font color="#000000">:</font><font color="#990000">32&nbsp;</font><font color="#000000">IST&nbsp;</font><font color="#990000">2008</font><br />
+            <font color="#ffffff"></font><br />
+            <font color="#000000">Message&nbsp;:&nbsp;</font><br />
+            <font color="#000000">eml&nbsp;mail</font><br />
+            <font color="#000000">Mail&nbsp;have&nbsp;some&nbsp;attachment&nbsp;:&nbsp;</font><br />
+            <font color="#000000">file&nbsp;name&nbsp;:&nbsp;message.eml</font></code> </td>
+      <!-- end source code -->
+    </tr>
+  </table>
+</div>
+<p><font color="#000080"><a href="ReadMultipartMail.java"><b>Download code</b></a></font></p>
+<p>
+  
+		<div id="relatedlinks_container_div"></div>
+		<script language=javascript defer>
+		  var escFun = window.encodeURIComponent ? window.encodeURIComponent : escape;
+		  var relatedlinks_js = document.createElement("script");
+		  relatedlinks_js.setAttribute("charset", "utf-8");
+		  relatedlinks_js.src = "http://relatedlinks.googlelabs.com/client/client.js?url=" +
+			  escFun(document.URL) + "&referrer=" + escFun(document.referrer) +
+			  "&relatedlinks_id=10406_9101630510088397475&title=" + escFun(document.title);
+		  document.getElementsByTagName("head")[0].appendChild(relatedlinks_js);
+		</script>
+
+
+      <p align="center"><a href="SendMultipartMail.shtml"><img src="../images/previous.gif" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;<a href="index.shtml"><img src="../images/bt_home.gif" border="0"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="SendAttachment.shtml"><img src="../images/next.gif" border="0"></a></p>
+
+
+  </td>
+  </tr>
+</table>
+</center>
+<!-- Bottom -->
+<!-- google_ad_section_end -->
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+
+
+  <tr>
+    <td width="26%"><a href='/alltutorials/javamail/'> » View all related tutorials <img src='/images/newwindow.gif' border='0'></a></td>
+    <td width="74%">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-0714075272818912";
+/* 468x15, created 8/29/08- ads-bottom-links-1 */
+google_ad_slot = "9490642575";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+	</td>
+  </tr>
+
+</table>
+
+
+
+<script type="text/javascript"><!--
+   e9 = new Object();
+   e9.size = "336x280,300x250";
+   e9.noAd = 1;
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/RoseIndianet/ROS/tags.js"></script>
+
+
+
+
+
+		<!-- Tabs -->
+		<div id="tabs" class="tabs">
+			<ul>
+				<li><a href="#tabs-1">More in this series...</a></li>
+				<li><a href="/d1/extjs/mostread.php">Most Read</a></li>
+				<li><a href="/d1/extjs/latest.php">Latest</a></li>
+				<li><a href="/d1/extjs/search.php">Search</a></li>
+			</ul>
+			<div id="tabs-1">
+				<UL class=categorylinks><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/17889'>Introduction of Java Mail ... <font color='red'> 2683 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/24146'>Java Mail Assimilator Example ... <font color='red'> 31550 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23182'>Java Mail AttributeClient Example ... <font color='red'> 31764 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23183'>List Information about folder ... <font color='red'> 31811 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/24147'>How to show header of any message using Java Mail api ... <font color='red'> 31961 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23317'>Read Mail using James Server ... <font color='red'> 32775 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23017'>Send HTML Mail with images ... <font color='red'> 32919 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23178'>Deleting messages example ... <font color='red'> 33063 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23175'>Replying to messages using Java mail ... <font color='red'> 33411 views</font></a></LI><LI id=c7 type='square'><a href='http://www.roseindia.net/software-tutorials/ratings/23179'>Java Mail Mail Authenticator Example ... <font color='red'> 33926 views</font></a></LI></ul>&nbsp; <a href='/alltutorials/javamail/'> » View all related tutorials <img src='/images/newwindow.gif' border='0'></a>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+<script src="/d1/rating/rating/starrating.js" type="text/javascript"></script>
+<link href="/d1/rating/rating/starrating.css" rel="stylesheet" type="text/css" media="screen" />
+<input type="hidden" name="tutorialid" id="tutorialid" value="23179">
+<ul class='star-rating'>
+  <li class="current-rating" id="current-rating"><!-- will show current rating --></li>
+  <span id="ratelinks">
+  <li><a href="javascript:void(0)" title="1 star out of 5" class="one-star">1</a></li>
+  <li><a href="javascript:void(0)" title="2 stars out of 5" class="two-stars">2</a></li>
+  <li><a href="javascript:void(0)" title="3 stars out of 5" class="three-stars">3</a></li>
+  <li><a href="javascript:void(0)" title="4 stars out of 5" class="four-stars">4</a></li>
+  <li><a href="javascript:void(0)" title="5 stars out of 5" class="five-stars">5</a></li>
+  </span>
+</ul>
+
+
+
+<b>Related Tags:</b>
+<a href="/tags/java">java</a>
+<a href="/tags/c">c</a>
+<a href="/tags/api">api</a>
+<a href="/tags/authentication">authentication</a>
+<a href="/tags/class">class</a>
+<a href="/tags/orm">orm</a>
+<a href="/tags/form">form</a>
+<a href="/tags/network">network</a>
+<a href="/tags/object">object</a>
+<a href="/tags/io">io</a>
+<a href="/tags/connection">connection</a>
+<a href="/tags/mail">mail</a>
+<a href="/tags/method">method</a>
+<a href="/tags/user">user</a>
+<a href="/tags/format">format</a>
+<a href="/tags/get">get</a>
+<a href="/tags/password">password</a>
+<a href="/tags/word">word</a>
+<a href="/tags/name">name</a>
+<a href="/tags/return">return</a>
+
+
+
+
+<script language="javascript">
+
+function form_Validator(form)
+{
+
+  if (form.name.value == "")
+  {
+    alert("Please enter your name.");
+    form.name.focus();
+	return (false);
+     }
+
+  if (form.title.value == "")
+  {
+    alert("Please enter title.");
+    form.title.focus();
+	return (false);
+  }
+
+
+
+
+  if (form.message.value == "")
+  {
+    alert("Please enter your message.");
+    form.message.focus();
+    return (false);
+  }
+  
+    if (form.validationid.value == "")
+  {
+    alert("Please enter validation code.");
+    form.validationid.focus();
+	return (false);
+     }
+
+  return (true);
+  }
+  //-->
+  </script>
+
+<style type="text/css">
+.questionarea
+{
+	width:323px;
+	float:left;
+}
+.questionarea_top
+{
+	width:313px;
+	padding:5px;
+	float:left;
+	background:#A7C3F2 url(askquestiontop_bg.jpg) no-repeat;
+	font:bold 14px Arial, Helvetica, sans-serif;
+	color:#245388;
+}
+.questionarea_middle
+{
+	width:313px;
+	padding:5px;
+	float:left;
+	background:#D1DFFE url(/d2/images/middlebg.jpg) repeat-x;
+}
+.questionareainput
+{
+	width:301px;
+	float:left;
+	height:100px;
+	padding:6px;
+	background:#ffffff url(/d2/images/input_bg.jpg) repeat-x;
+	border:0;
+}
+.questionareabtn
+{
+	width:44px;
+	float:right;
+	height:22px;
+	background:url(/d2/images/askgobtn.png) no-repeat;
+	border:0;
+}
+.questionarea_bottom
+{
+	width:323px;
+	float:left;
+	background:url(/d2/images/askquestionbottom_bg.jpg) no-repeat;
+}
+
+</style>
+<script language="JavaScript">
+function validateQuestionForm1(theForm){
+	if(theForm.question.value=="Type your question..."){
+		alert("Please enter your question!");
+		theForm.question.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<div class="questionarea">
+	<div class="questionarea_top">Ask programming questions?</div>
+	<div class="questionarea_middle">
+		<form method="post" action="/answers/askquestions/askquestion.html" onsubmit="return validateQuestionForm1(this)">
+			<textarea class="questionareainput" name="question" id="question" onfocus="if(this.value=='Type your question...')this.value='';" onblur="if(this.value=='')this.value='Type your question...';"/>Type your question...</textarea><br />
+			<input type="submit" value="" class="questionareabtn" />
+		</form>
+	</div>
+	<div class="questionarea_bottom">&nbsp;</div>
+</div>
+
+<p>&nbsp;</p>
+
+
+<script type="text/javascript"><!--
+   e9 = new Object();
+   e9.size = "336x280,300x250,300x600";
+   e9.noAd = 1;
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/RoseIndianet/ROS/tags.js"></script>
+
+
+
+<style>
+/*COMMENTS
+*------------------------------------*/
+
+.postedby {
+	padding: 0 0 0 18px;
+	background: url(/images/abullet.gif) no-repeat 0 4px;
+	}
+	
+h3.formtitle {
+	margin : 0px 0px 0px 0px;
+	border-bottom: 1px dotted #ccc;
+	padding-bottom: 8px;
+	}
+
+.commentbody {
+	border-top: 1px dotted #ccc;
+	}
+	
+/*gray box*/
+.submitcomment, #submitcomment, #currentcomments, #rating, .textad {
+	background-color: #F5F5F5;
+	border: 1px dotted #ccc;
+	padding: 5px;
+	padding: 5px;
+	margin: 20px 0px 0px 0px;
+	}
+
+
+/*FORMS
+*------------------------------------*/
+
+.form {
+	font-size: 70%;
+	background-color: #FAFAFA;
+	border: solid 1px #C6C6C6;
+	padding: 2px;
+	}
+
+.formtext {
+	background-color: #FAFAFA;
+	border: solid 1px #C6C6C6;
+	padding: 2px;
+	border-bottom: 1px dotted #ccc
+	}
+
+.form:hover, .formtext:hover {
+	background: white;
+	}
+	
+.form:focus, .formtext:focus {
+	background: white;
+	border: solid 1px #000000;
+	}
+	
+.submit {
+	background-color: #D3D3D3;
+	border: solid 1px #C6C6C6;
+	border-right:  solid 1px #9A9A9A;
+	border-bottom:  solid 1px #9A9A9A;
+	}
+	
+.submit:hover, .submit:focus {
+	background: #EDEDED;
+	}
+	</style>
+
+	
+	
+<SCRIPT language="JavaScript" src="http://www.roseindia.net/roseindia.js" type="text/javascript"></SCRIPT>
+
+<script language="JavaScript" type="text/javascript">
+var addtoMethod=1;
+var AddURL = document.location.href;
+var AddTitle = escape(document.title);
+</script>
+<table>
+
+ 
+  <tr>
+    <td colspan="4" class="add2head" height="20"><b>Add This
+      Tutorial To:</b></td>
+  </tr>
+  <tr bgcolor="#ffffcc">
+    <td height="20" valign="middle">&nbsp;<span title="Add this page to Delicious" onclick="addto(2)"><img src="/images/AddTo_Delicious.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Del.icio.us</u></span></td>
+    <td valign="middle">&nbsp;<span title="Add this page to Digg" onclick="addto(3)"><img src="/images/AddTo_Digg.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Digg</u></span></td>
+    <td valign="middle">&nbsp;<span title="Add this page to Google" onclick="addto(5)"><img src="/images/AddTo_Google.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Google</u></span></td>
+    <td valign="middle">&nbsp;<span title="Add this page to Spurl" onclick="addto(8)"><img src="/images/AddTo_Spurl.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Spurl</u></span></td>
+
+    <td height="20" valign="middle">&nbsp;<span title="Add this page to Blink" onclick="addto(1)"><img src="/images/AddTo_Blink.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Blink</u></span></td>
+    <td valign="middle">&nbsp;<span title="Add this page to Furl" onclick="addto(4)"><img src="/images/AddTo_Furl.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Furl</u></span></td>
+    <td valign="middle">&nbsp;<span title="Add this page to Simpy" onclick="addto(6)"><img src="/images/AddTo_Simpy.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Simpy</u></span></td>
+    <td valign="middle">&nbsp;<span title="Add this page to Yahoo! MyWeb" onclick="addto(7)"><img src="/images/AddTo_Yahoo.gif" align="absmiddle" border="0" width="16" height="16">
+      <u>Y! MyWeb</u></span>&nbsp;</td>
+  </tr>
+</table>
+
+	<div id="currentcomments" align="left" class="submitcomment"><p align='center'><b>Current Comments</b></p>
+5 comments so far (<a href="#post">post your own</a>)
+ <a href="http://www.roseindia.net/tutorialhelp/allcomments/107078">View All Comments</a> Latest 10 Comments:<div class="commentbody" id="98969">
+
+		<p>this article is excellent</p>
+
+		<p class="postedby">Posted by <a href="http://www.roseindia.net/javamail/ReadMultipartMail.shtml">Pablo Balonga</a> on Tuesday, 08.17.10 @ 00:06am | #98969</p>
+
+		
+</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.roseindia.net/tutorialhelp/comment/98969'>View This Comment Separately</a></div><div class="commentbody" id="97361">
+
+		<p>When I execute your code I get an error<br />
+<br />
+Exception in thread "main" javax.mail.NoSuchProviderException: No provider for p<br />
+op<br />
+        at javax.mail.Session.getProvider(Session.java:436)<br />
+        at javax.mail.Session.getStore(Session.java:511)<br />
+        at javax.mail.Session.getStore(Session.java:491)<br />
+        at ReadMail.main(ReadMail.java:35)<br />
+Press any key to continue...<br />
+<br />
+How to rectify it.</p>
+
+		<p class="postedby">Posted by <a href="http://www.roseindia.net/javamail/ReadMultipartMail.shtml">aadhi</a> on Friday, 06.4.10 @ 14:55pm | #97361</p>
+
+		
+</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.roseindia.net/tutorialhelp/comment/97361'>View This Comment Separately</a></div><div class="commentbody" id="97020">
+
+		<p>where did you get your host value "192.168.10.205";<br />
+Id that ipConfig.<br />
+I was trying your example with my host(ipconfig) and get an error:"connection failed, Connection Reset.<br />
+<br />
+Please help me.<br />
+<br />
+Thank you<br />
+        </p>
+
+		<p class="postedby">Posted by <a href="http://www.roseindia.net/javamail/ReadMultipartMail.shtml">natalie</a> on Friday, 05.14.10 @ 01:29am | #97020</p>
+
+		
+</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.roseindia.net/tutorialhelp/comment/97020'>View This Comment Separately</a></div><div class="commentbody" id="96846">
+
+		<p>this program is giving following error<br />
+<br />
+G:\english\Language\Java\program\mail&gt;java ReadMultipartMail<br />
+Exception in thread "main" javax.mail.MessagingException: Connect failed;<br />
+  nested exception is:<br />
+        java.io.IOException: Connect failed<br />
+        at com.sun.mail.pop3.POP3Store.protocolConnect(POP3Store.java:176)<br />
+        at javax.mail.Service.connect(Service.java:291)<br />
+        at javax.mail.Service.connect(Service.java:172)<br />
+        at ReadMultipartMail.main(ReadMultipartMail.java:18)<br />
+Caused by: java.io.IOException: Connect failed<br />
+        at com.sun.mail.pop3.Protocol.&lt;init&gt;(Protocol.java:113)<br />
+        at com.sun.mail.pop3.POP3Store.getPort(POP3Store.java:227)<br />
+        at com.sun.mail.pop3.POP3Store.protocolConnect(POP3Store.java:172)<br />
+        ... 3 more</p>
+
+		<p class="postedby">Posted by <a href="http://www.roseindia.net/javamail/ReadMultipartMail.shtml">mohit</a> on Thursday, 05.6.10 @ 00:49am | #96846</p>
+
+		
+</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.roseindia.net/tutorialhelp/comment/96846'>View This Comment Separately</a></div><div class="commentbody" id="89985">
+
+		<p>i try to get details form .eml file, which contain attachment.it works if that attachment types are pdf/word..<br />
+but if that attachment type also .eml then i is not.Can you help to extract that attachment.<br />
+This is the code...<br />
+//<br />
+package tools;<br />
+<br />
+import java.io.File;<br />
+import java.io.FileInputStream;<br />
+import java.io.InputStream;<br />
+import java.util.*;<br />
+<br />
+import javax.activation.DataHandler;<br />
+import javax.mail.*;<br />
+import javax.mail.internet.*;<br />
+<br />
+public class ReadMultipartMail {<br />
+<br />
+	public static void main(String args[]) throws Exception {<br />
+		 File emlFile = new<br />
+		 File("F:/test.eml");<br />
+<br />
+		InputStream source;<br />
+<br />
+		source = new FileInputStream(emlFile);<br />
+<br />
+		Properties props = System.getProperties();<br />
+		props.put("mail.host", "smtp.dummydomain.com");<br />
+		props.put("mail.transport.protocol", "smtp");<br />
+<br />
+		Session mailSession = Session.getDefaultInstance(props, null);<br />
+		MimeMessage message = new MimeMessage(mailSession, source);<br />
+		System.out.println("Subject : " + message.getSubject());<br />
+		System.out.println("From : " + message.getFrom()[0]);<br />
+<br />
+		String from = InternetAddress.toString(message.getFrom());<br />
+		if (from != null) {<br />
+			System.out.println("From: " + from);<br />
+		}<br />
+<br />
+		String replyTo = InternetAddress.toString(message.getReplyTo());<br />
+		if (replyTo != null) {<br />
+			System.out.println("Reply-to: " + replyTo);<br />
+		}<br />
+		String to = InternetAddress.toString(message<br />
+				.getRecipients(Message.RecipientType.TO));<br />
+		if (to != null) {<br />
+			System.out.println("To: " + to);<br />
+		}<br />
+<br />
+		String subject = message.getSubject();<br />
+		if (subject != null) {<br />
+			System.out.println("Subject: " + subject);<br />
+		}<br />
+		Date sent = message.getSentDate();<br />
+		if (sent != null) {<br />
+			System.out.println("Sent: " + sent);<br />
+		}<br />
+<br />
+		System.out.println();<br />
+		System.out.println("Message : ");<br />
+<br />
+		Multipart multipart = (Multipart) message.getContent();<br />
+<br />
+		for (int x = 0; x &lt; multipart.getCount(); x++) {<br />
+			BodyPart bodyPart = multipart.getBodyPart(x);<br />
+<br />
+			String disposition = bodyPart.getDisposition();<br />
+<br />
+			if (disposition != null<br />
+					&& (disposition.equals(BodyPart.ATTACHMENT))) {<br />
+				System.out.println("Mail have some attachment : ");<br />
+<br />
+				DataHandler handler = bodyPart.getDataHandler();<br />
+				System.out.println("file name : " + handler.getName());<br />
+			} else {<br />
+				System.out.println(bodyPart.getContent());<br />
+			}<br />
+		}<br />
+		System.out.println();<br />
+	}<br />
+<br />
+}</p>
+
+		<p class="postedby">Posted by <a href="http://www.roseindia.net/javamail/ReadMultipartMail.shtml">Ilamprai</a> on Thursday, 08.13.09 @ 10:28am | #89985</p>
+
+		
+</div><div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='http://www.roseindia.net/tutorialhelp/comment/89985'>View This Comment Separately</a></div></div>
+
+
+
+<style type="text/css">
+<!--
+.style1 {color: #000066}
+-->
+</style>
+
+
+</td>
+			<td valign="top" width="340">
+
+
+				<table border="0" width="340" cellspacing="0" cellpadding="0" style="border-color: #D4D5D6;border-width: 0px 0px 0px 0px;border-style: solid;">
+
+
+
+
+
+	
+
+
+					 <tr>
+					  <td>
+						<!--<div align="left" style="background-color:#F0F0F0"><b>Tell A Friend</b></div>-->&nbsp;
+					  </td>
+					 </tr>
+
+
+
+
+					 <tr>
+					  <td align="left">
+						<div align="left" class="right-ads1">
+
+<style type="text/css">
+.questionarea
+{
+	width:323px;
+	float:left;
+}
+.questionarea_top
+{
+	width:313px;
+	padding:5px;
+	float:left;
+	background:#A7C3F2 url(askquestiontop_bg.jpg) no-repeat;
+	font:bold 14px Arial, Helvetica, sans-serif;
+	color:#245388;
+}
+.questionarea_middle
+{
+	width:313px;
+	padding:5px;
+	float:left;
+	background:#D1DFFE url(/d2/images/middlebg.jpg) repeat-x;
+}
+.questionareainput
+{
+	width:301px;
+	float:left;
+	height:100px;
+	padding:6px;
+	background:#ffffff url(/d2/images/input_bg.jpg) repeat-x;
+	border:0;
+}
+.questionareabtn
+{
+	width:44px;
+	float:right;
+	height:22px;
+	background:url(/d2/images/askgobtn.png) no-repeat;
+	border:0;
+}
+.questionarea_bottom
+{
+	width:323px;
+	float:left;
+	background:url(/d2/images/askquestionbottom_bg.jpg) no-repeat;
+}
+
+</style>
+<script language="JavaScript">
+function validateQuestionForm(theForm){
+	if(theForm.question.value=="Type your question..."){
+		alert("Please enter your question!");
+		theForm.question.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<div class="questionarea">
+	<div class="questionarea_top">Ask programming questions?</div>
+	<div class="questionarea_middle">
+		<form method="post" action="/answers/askquestions/askquestion.html" onsubmit="return validateQuestionForm(this)">
+			<textarea class="questionareainput" name="question" id="question" onfocus="if(this.value=='Type your question...')this.value='';" onblur="if(this.value=='')this.value='Type your question...';"/>Type your question...</textarea><br />
+			<input type="submit" value="" class="questionareabtn" />
+		</form>
+	</div>
+	<div class="questionarea_bottom">&nbsp;</div>
+</div>
+
+
+
+						</div>
+
+						<br>&nbsp;
+					  </td>
+					 </tr>
+
+
+		<tr>
+					  <td align="center">
+					  <table border="0" width="100%">
+					  <tr>
+					  <td>
+						<div align="center" class="right-ads2">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-0714075272818912";
+/* New bottom 160x600 */
+google_ad_slot = "5708441037";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+
+						</div>
+						</td>
+						<td>
+							<ul type="square">
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/">
+											Programming Tutorials</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/springframework">
+											Spring Framework</a><a style="color: rgb(0, 0, 128);"> </a>
+											</font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Hibernate-Tutorials">
+											Hibernate-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a>
+											</font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Ajax">
+											Ajax</a><a style="color: rgb(0, 0, 128);"> </a></font> </li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/core-java">
+											Core Java</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Enterprise-Java">
+											Enterprise Java</a><a style="color: rgb(0, 0, 128);"> </a>
+											</font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/iphone">
+											iPhone</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/J2ME-Tutorials">
+											J2ME-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Java-Tutorials">
+											Java-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/JavaScript">
+											JavaScript</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/JDBC-Tutorials">
+											JDBC-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/JPA">
+											JPA</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/JSP-Tutorials">
+											JSP-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/opensource">
+											Open Source</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/PHP">
+											PHP</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Servlets-Tutorials">
+											Servlets-Tutorials</a></font></li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Struts-Tutorials">
+											Struts-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a>
+											</font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/technology">
+											Technology</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+											
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/Web-Services-Tutorials">
+											Web-Services-Tutorials</a><a style="color: rgb(0, 0, 128);"> </a>
+											</font>
+											<br />
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/xml">
+											XML</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											</li>
+											<li><font size="4">
+											<a style="color: rgb(0, 0, 128);" href="http://www.roseindia.net/programming-tutorial/tutorials">
+											More Tutorials....</a><a style="color: rgb(0, 0, 128);"> </a></font>
+											<br />
+											</li>
+							</ul>
+
+						</td>
+						</tr>
+						</table>
+						
+					  </td>
+					 </tr>
+
+
+					<tr>
+					<td align="left"  valign="top" >
+
+<script type="text/javascript"><!--
+   e9 = new Object();
+   e9.size = "160x600,120x600";
+   e9.noAd = 1;
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/RoseIndianet/ROS/tags.js"></script>
+
+
+
+
+					</td>
+					</tr>
+
+					<tr>
+					<td align="left"  valign="top" >
+
+			<!-- ValueClick Media 300x250 Medium Rectangle CODE for Programming Tutorials -->
+			<script language="javascript" src="http://media.fastclick.net/w/get.media?sid=53719&m=6&tp=8&d=j&t=n"></script> <noscript><a href="http://media.fastclick.net/w/click.here?sid=53719&m=6&c=1" target="_blank"> <img src="http://media.fastclick.net/w/get.media?sid=53719&m=6&tp=8&d=s&c=1" width=300 height=250 border=1></a></noscript> <!-- ValueClick Media 300x250 Medium Rectangle CODE for Programming Tutorials -->
+
+					</td>
+					</tr>
+
+
+		<tr>
+			<td align="center">
+			&nbsp;</br>
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FRoseIndianet%2F157862977599407&amp;layout=standard&amp;show_faces=true&amp;width=200&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:80px;" allowTransparency="true"></iframe>
+			</td>
+		</tr>
+
+
+
+
+
+		<tr>
+		<td align="left" height="80">
+
+		<DIV class=headers>
+			<div align="left" style="background-color: #F0F0F0"><b>Recently Viewed</b></div>
+			</DIV>
+
+			<UL class=categorylinks>
+
+
+								<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23923">JSP Alert</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23916">JSP CheckBox</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23871">JSP decode URL</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23838">Duplicated Session Variables</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23700">JSP Frameset</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23699">JSP get Parameter</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23698">JSP Get URL</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23697">JSP Include File</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23696">JSP Include jsp</a></Li>
+										<LI id=c7 type="square"><a href="http://www.roseindia.net/software-tutorials/ratings/23695">JSP Include Param</a></Li>
+					
+			  </UL>
+
+
+
+		</td>
+		</tr>
+
+
+
+
+	<tr>
+	<td align="left" height="80">
+
+	<DIV class=headers>
+		<div align="left" style="background-color:#F0F0F0"><b>Software Solutions</b></div>
+		</DIV>
+
+	  <UL class=categorylinks>
+
+
+		<LI id=c7 type="square"><a href="/services/">Software Solutions and Services</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/webdesigning/web-designing-services.shtml">Website Designing Services</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/webdesigning/Web-Design-Packages.shtml">Web Designing Packages! From $150!</a></Li>
+		<LI id=c7 type="square"><a href="/services/flexdevelopment/FlexOutsourcing.shtml">Flex Outsourcing</a></Li>
+
+
+		<LI id=c7 type="square"><a href="/services/flexdevelopment/HireFlexDeveloper.shtml">Hire Flex Developer</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/webdesigning/website-designing-company-web-hosting.shtml">Website Designing Company Web Hosting</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/webdesigning/Website-Designing-Quotation.shtml">Website Designing Quotation</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/php/hire-php-developer.shtml">Hire PHP Developer</a></Li>
+		<LI id=c7 type="square"><a href="/services/hiredeveloper/hire-php-programmers.shtml">Hire PHP programmer</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/php/php-outsourcing.shtml">PHP Outsourcing</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/outsourcing/java-project-outsourcing.shtml">Java Project Outsourcing</a></Li>
+
+		<LI id=c7 type="square"><a href="/services/hiredeveloper/index.shtml">Hire Software Developer</a></Li>
+		<LI id=c7 type="square"><a href="/services/hiredeveloper/hire-java-developer.shtml">Hire Java Developer</a></Li>
+
+	    <LI id=c7 type="square"><a href="/services/hiredeveloper/hire-iphone-developer.shtml">Hire iPhone developer</a></LI>
+	    <LI id=c7 type="square"><a href="/services/iphone/Outsourcing-iphone-development.shtml">Outsourcing iPhone development</a></LI>
+	    <LI id=c7 type="square"><a href="/services/iphone/Offshore-iPhone-Apps-Development.shtml">Offshore iPhone Apps Development</a></LI>
+
+				
+	    <LI id=c7 type="square"><a href="/services/development/website/interior-design-website-templates.htm">Interior Design Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/print-card-website-templates.html">Print Card Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/manufacturer-website-templates.html">Manufacturer Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/gifts-shop-website-templates.html">Gifts Shop Web Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/real-estate-website-templates.html">Real Estate WebsiteTemplates </a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/software-website-templates.html">Software Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/online-shopping-web-templates.html">Online Shopping Store Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/hotels-website-templates.html">Hotels Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/business-website-templates.html">Business Website Templates</a></LI>
+						
+	    <LI id=c7 type="square"><a href="/services/development/website/art-photography-web-templates.html">Art and Photography Website Templates</a></LI>
+					
+
+	  </UL>
+
+
+
+	</td>
+	</tr>
+
+
+
+					 <tr>
+					  <td>
+						<div align="left" style="background-color:#CBD0EF"><b>Search Tutorials</b></div>
+					  </td>
+					 </tr>
+
+				<tr>
+				<td align="left"  valign="top">
+
+					<form name="form1" method="get" action="/tutorialsearch/">
+					  <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+						<tr>
+						  <td width="100%" valign="middle">
+							<input type="text" name="t"> <input name="image" type="image" src="/images/go_button.gif" align="middle" width="29" height="21">
+						  </td>
+						</tr>
+					  </table>
+
+					</form>
+
+				</td>
+				</tr>
+
+
+					 <tr>
+					  <td>
+
+<script type="text/javascript"><!--
+   e9 = new Object();
+   e9.size = "336x280,300x250,300x600";
+   e9.noAd = 1;
+//--></script>
+
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/RoseIndianet/ROS/tags.js"></script>
+
+					  </td>
+					 </tr>
+
+
+
+					 <tr>
+					  <td align="left" bgcolor="#FEEEBD">
+
+
+<script language="javascript">
+function validateName(objForm){
+
+   if(objForm.name.value.length==0)
+   {
+     alert("Please Enter your Friend Name!");
+	 objForm.name.focus();
+	 return false;
+   }
+
+   return true;
+}
+
+</script>
+					<form action="/sendlink/mailForm.php" method="post" onsubmit="return validateName(this)">
+					 <center>
+					 <table border="0">
+
+
+					 <tr><td align= "center">
+
+					 <b>Tell A Friend</b><br>
+
+					 <font color="#000080"> Your Friend Name</font></td></tr><tr>
+					<td> <input type="text" name="name" size="17"></td>
+					</tr>
+					<tr>
+
+					<td align="center" colspan="2"><input type="submit" value="  OK  " name="btnOK"></td>
+					</tr>
+
+					</table>
+					</center>
+					</form>
+
+
+
+						<br>&nbsp;
+					  </td>
+					 </tr>
+
+
+
+
+
+				</table>
+
+
+
+
+<br>&nbsp;<br>
+<br>&nbsp;<br>
+
+
+
+
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+
+  <table width="100%" border="0" align="center" cellPadding="0" cellSpacing="0">
+    <tbody>
+
+
+    <tr>
+	 <td align="center">
+			<a name="book">&nbsp;</a>
+     </td>
+	</tr>
+
+
+
+
+    <tr>
+          <td align="middle" colSpan="3" width="100%">
+
+                      <p align="center"><font size="1" face="arial">
+                        <a href="http://www.roseindia.net"  style="font-family: Arial; font-size: 8pt" >Home</a>
+
+                      | <a href="http://www.roseindia.net/jsp/jsp.shtml"  style="font-family: Arial; font-size: 8pt">JSP</a>
+                      | <a href="http://www.roseindia.net/javabeans/javabeans.shtml"  style="font-family: Arial; font-size: 8pt">EJB</a>
+                      | <a href="http://www.roseindia.net/jdbc/jdbc.shtml"  style="font-family: Arial; font-size: 8pt">JDBC</a>
+                      | <a href="http://www.roseindia.net/servlets/servlets.htm"  style="font-family: Arial; font-size: 8pt">Java Servlets</a>
+                      | <a href="http://www.roseindia.net/wap/index.htm"  style="font-family: Arial; font-size: 8pt">WAP</a>&nbsp;
+                      | <a href="http://www.roseindia.net/freehosting/freejsphosting.htm "  style="font-family: Arial; font-size: 8pt">Free JSP Hosting</a>&nbsp;
+					  | <a href="http://www.roseindia.net/sourcecode/searchengine/index.htm"  style="font-family: Arial; font-size: 8pt">Search Engine</a>
+                      | <a href="http://www.roseindia.net/newsletter/"  style="font-family: Arial; font-size: 8pt">News Archive</a>
+                      | <a href="http://www.roseindia.net/jboss/index.htm"  style="font-family: Arial; font-size: 8pt">Jboss 3.0 tutorial</a>
+                      | <a href="http://www.roseindia.net/linux/"  style="font-family: Arial; font-size: 8pt">Free Linux CD's</a>
+                      | <a href="http://www.roseindia.net/forum/"  style="font-family: Arial; font-size: 8pt">Forum</a>
+
+					   | <a href="/blog/"  style="font-family: Arial; font-size: 8pt">Blogs</a>
+
+					   </font></p>
+
+                      <p align="center"><font size="1" face="arial">
+                      <a href="http://www.roseindia.net/businesssolutions/aboutroseindia.shtml"  style="font-family: Arial; font-size: 8pt" >About Us</a> |
+					  <a href="http://www.roseindia.net/advertisewithus/advertisewithroseindia.shtml"  style="font-family: Arial; font-size: 8pt">Advertising On RoseIndia.net</a>&nbsp; |
+					  <a href="http://www.roseindia.net/sitemap/sitemap.shtml"  style="font-family: Arial; font-size: 8pt">Site Map</a>
+
+					  |
+					  <a href="/privacypolicy.shtml"  style="font-family: Arial; font-size: 8pt">Privacy Policy</a>
+
+                      </p>
+		</td>
+    </tr>
+</table>
+</td>
+	</tr>
+
+
+    <tr>
+      <td align="middle" width="100%">
+
+		<div align="center">
+		  <table width="50%"  border="0" cellspacing="1" cellpadding="0">
+				<tr>
+
+				  <td width="25%"><a href="http://www.javajazzup.com"><img src="/images/java_jazzup.gif" border="0" width="91" height="52"></a></td>
+
+
+				  <td width="25%"><a href="http://www.roseindia.net/listjobs/"><img src="/images/latest-job.gif" border="0" width="91" height="52"></a></td>
+
+				  <td width="25%"><a href="http://www.allcooljobs.com"><img src="/images/allcooljobsbanner.gif" border="0" width="91" height="52"></a></td>
+
+				  <td width="25%"><a href="http://www.allcoolloans.com/"><img src="/images/loansbanner.gif" border="0" width="91" height="52"></a></td>
+
+				  <td width="25%"><a href="http://www.newstrackindia.com/"><img src="/images/newstrackindiabanner.gif" border="0" width="91" height="52" alt="India News"></a></td>
+
+				  <td width="25%"><a href="http://www.onlinefreetrading.com/"><img src="/images/freetradingbanner.gif" border="0" width="91" height="52"></a></td>
+				</tr>
+
+          </table>
+	    </div>
+
+
+      </td>
+    </tr>
+
+
+     <tr>
+        <td align="middle" width="100%">
+         <center>
+
+<a href="http://allcoolforum.com/java-programming-f74/" target="_blank"><img src="/images/forums.gif" border="1"></a>  <a href="http://www.roseindia.net/help/writetutorials.shtml" target="_blank"><img src="/images/extra-cash.gif" border="1"></a>
+
+  </p>
+
+        </center>
+
+        </td>
+    </tr>
+
+
+     <tr>
+        <td align="middle" width="100%">
+          <p align="center"><font color="#000080">Send your comments, Suggestions or Queries regarding this site at <a href="mailto:roseindia_net@yahoo.com">roseindia_net@yahoo.com.</a></font></p>
+        </td>
+    </tr>
+
+    <tr>
+      <td align="middle" width="100%">
+        <p align="center"><font color="#000080">Copyright © 2008. All rights reserved.</font></p>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+  </div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-287488-1";
+urchinTracker();
+</script>
+
+
+
+
+<script type="text/javascript"><!--
+   e9 = new Object();
+   e9.noAd = 1;
+   e9.popOnly = 1;
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/RoseIndianet/ROS/tags.js"></script>
+
+<!-- Bottom --> 
+
+</body>
+
+</html>

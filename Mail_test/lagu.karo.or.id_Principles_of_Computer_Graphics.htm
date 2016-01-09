@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<title>[Solved]   I want to receive an email using java api? - Security Answers</title>
+	
+	
+	<link rel="stylesheet" href="lagu.karo.or.id_Principles_of_Computer_Graphics_files/style.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="lagu.karo.or.id_Principles_of_Computer_Graphics_files/custom.css" type="text/css" media="screen">
+	<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://www.SeasonSecurity.com/wp-content/themes/default/ie7.css" media="screen" />
+	<![endif]-->
+	<!--[if lte IE 6]>
+	<link rel="stylesheet" type="text/css" href="http://www.SeasonSecurity.com/wp-content/themes/default/ie6.css" media="screen" />
+	<![endif]-->
+	
+
+
+	
+</head><body class="custom">
+
+<div id="container">
+	<div id="header">
+  <div id="header1"> 
+    <div id="logo"><a href="http://www.seasonsecurity.com/"><img src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/logosoft.gif" alt="Security Software review and downloads" border="0" height="58" width="415"></a>    </div>
+  </div>
+  <div id="navcontainer"> 
+   
+
+
+</div>
+  
+
+	<div id="content_box">
+	
+	
+		
+		<div id="content" class="posts">
+			
+				
+		
+						
+			<h1>I want to receive an email using java api?</h1>
+			<h4>Solved</h4>
+	<div class="reladg"><script type="text/javascript"><!--
+google_ad_client = "pub-4717207030182685";
+/* 336x280, at 08-6-6 */
+google_ad_slot = "9300102755";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/show_ads.js">
+</script><script src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/show_ads_impl.js"></script><script src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/expansion_embed.js"></script><script src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="display: inline-table; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/ads.xhtml" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins></div>		
+    <div class="entry"> 
+      <p>import javax.mail.* ;<br>
+import javax.mail.internet.* ;<br>
+import javax.activation.* ;<br>
+import java.util.*;<br>
+import java.io.*;</p>
+<p>import com.sun.mail.pop3.POP3Store;</p>
+<p>////////////// CLASS pop Authenticator  //////////////<br>
+class popAuthenticator extends javax.mail.Authenticator {<br>
+String username = "";<br>
+    String password = "";</p>
+<p>    public popAuthenticator(String username, String password) {<br>
+    this.username = username;<br>
+       this.password = password;<br>
+    }</p>
+<p>    public PasswordAuthentication getPasswordAuthentication() {<br>
+      return new PasswordAuthentication(username, password);<br>
+    }<br>
+}</p>
+<p>class EmailReceiveTest {</p>
+<p>public static void main(String[] args) {</p>
+<p>String mailPop3Host = "pop.gmail.com";<br>
+String mailStoreType = "pop3";<br>
+String mailUser = "usmantalk2u@ucp.edu.pk";<br>
+String mailPassword = "";</p>
+<p>receiveEmail(mailPop3Host, mailStoreType, mailUser, mailPassword);<br>
+}</p>
+<p>public static void receiveEmail(String pop3Host, String storeType, String user, String password) {</p>
+<p>try {<br>
+Properties properties = new Properties();<br>
+properties.put("mail.pop3.host", pop3Host);<br>
+//properties.put("mail.pop3.user",user);<br>
+properties.put("mail.transport.protocol", "pop3");<br>
+//properties.put("mail.pop3.port", "995");<br>
+//properties.put("mail.pop3.starttls.enable", "true");<br>
+properties.put("mail.pop3.auth", "true");<br>
+//properties.put("mail.pop3.socketFactory.port", "995");<br>
+//properties.put("mail.pop3.socketFactory.class","javax.net.ssl.SSLSocketFactory");<br>
+//properties.put("mail.pop3.socketFactory.fallback", "false");</p>
+<p>//Email Address Authentification<br>
+Authenticator auth = new popAuthenticator(user,password);</p>
+<p>Session emailSession = Session.getDefaultInstance(properties,auth);</p>
+<p>POP3Store emailStore = (POP3Store) emailSession.getStore(storeType);<br>
+emailStore.connect(user, password);</p>
+<p>Folder emailFolder = emailStore.getFolder("INBOX");<br>
+emailFolder.open(Folder.READ_ONLY);</p>
+<p>Message[] messages = emailFolder.getMessages();<br>
+for (int i = 0; i &lt; messages.length; i++) {<br>
+Message message = messages[i];<br>
+System.out.println("==============================");<br>
+System.out.println("Email #" + (i + 1));<br>
+System.out.println("Subject: " + message.getSubject());<br>
+System.out.println("From: " + message.getFrom()[0]);<br>
+System.out.println("Text: " + message.getContent().toString());<br>
+}</p>
+<p>emailFolder.close(false);<br>
+emailStore.close();<br>
+}catch (NoSuchProviderException e) {e.printStackTrace();}<br>
+catch (MessagingException e) {e.printStackTrace();}<br>
+catch (IOException e) {e.printStackTrace();}<br>
+}<br>
+}</p>
+<p>I AM FACING THE FOLLOWING ERROR</p>
+<p>javax.mail.AuthenticationFailedException: EOF on socket<br>
+    at com.sun.mail.pop3.POP3Store.protocolConnect(POP3Store.java:146)<br>
+    at javax.mail.Service.connect(Service.java:297)<br>
+    at javax.mail.Service.connect(Service.java:156)<br>
+    at javax.mail.Service.connect(Service.java:176)<br>
+    at test.EmailReceiveTest.receiveEmail(Rec2.java:65)<br>
+    at test.EmailReceiveTest.main(Rec2.java:42)</p>
+<p>Process completed.</p>
+
+
+<p>Related posts:</p><div class="rel"><li><a href="http://www.seasonsecurity.com/a/what-is-the-error-in-this-program-6852.html" rel="bookmark" title="Permanent Link: what is the error in this program?">what is the error in this program?</a></li><small>acccept the given string n thn check for the keywords.....
+
+import java.io.*;
+import...</small><li><a href="http://www.seasonsecurity.com/a/java-programming-problem-424.html" rel="bookmark" title="Permanent Link: java programming problem?">java programming problem?</a></li><small>whenever i run the following Java program ...
+
+import java.util.*;
+import...</small><li><a href="http://www.seasonsecurity.com/a/i-had-made-this-but-m-getting-2-errors-while-compiling-please-help-52769.html" rel="bookmark" title="Permanent Link: I Had made this but m getting 2 errors while compiling please help?">I Had made this but m getting 2 errors while compiling please help?</a></li><small>import java.io.*;
+
+class zfile3
+{
+Public StaticVoidMain(String ss[]) throws...</small><li><a href="http://www.seasonsecurity.com/a/my-program-gets-stuck-in-a-while-loop-java-4573.html" rel="bookmark" title="Permanent Link: My program gets stuck in a while loop? java?">My program gets stuck in a while loop? java?</a></li><small>If you answer correctly the first time, the while loops ends. Otherwise, it gets stuck in...</small><li><a href="http://www.seasonsecurity.com/a/i-need-help-with-computer-science-44755.html" rel="bookmark" title="Permanent Link: I need help with computer science!!?">I need help with computer science!!?</a></li><small>Im trying to display -&gt; (9.2 - 8.45) / 0.29 + 27 = 29.59
+okay heres my...</small><li><a href="http://www.seasonsecurity.com/a/help-to-make-the-following-java-code-into-an-exe-file-27819.html" rel="bookmark" title="Permanent Link: Help to make the following JAVA code into an exe file.?">Help to make the following JAVA code into an exe file.?</a></li><small>import java.io.*;
+import java.util.*;
+class prog1
+    {
+     static public int...</small><li><a href="http://www.seasonsecurity.com/a/how-do-i-fix-the-errors-in-this-java-program-30409.html" rel="bookmark" title="Permanent Link: How do i fix the errors in this java program?">How do i fix the errors in this java program?</a></li><small>package dashboard;
+import java.awt.*;
+import java.awt.event.*;
+import...</small><li><a href="http://www.seasonsecurity.com/a/php-send-email-not-working-25092.html" rel="bookmark" title="Permanent Link: PHP - send email not working?">PHP - send email not working?</a></li><small>I have a page that send users their password but nobody recieves the emails.
+
+$subject...</small><li><a href="http://www.seasonsecurity.com/a/configuring-yahoo-mail-in-outlook-2007-65963.html" rel="bookmark" title="Permanent Link: configuring yahoo mail in outlook 2007?">configuring yahoo mail in outlook 2007?</a></li><small>I have configured my yahoo mail in outlook with pop.mail.yahoo.com as my pop3 server and...</small><li><a href="http://www.seasonsecurity.com/a/zwinky-http-status-500-61728.html" rel="bookmark" title="Permanent Link: Zwinky HTTP Status 500?">Zwinky HTTP Status 500?</a></li><small>I was on Zwinky last night talking to my friends, but then the next day when i got home...</small></div>          </div>  
+			<p class="tagged"><strong>Tags:</strong> hotmail </p>
+			<br>
+<div class="reladg"><script type="text/javascript"><!--
+google_ad_client = "pub-4717207030182685";
+/* 336x280, at 08-6-6 */
+google_ad_slot = "9300102755";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/show_ads.js">
+</script><script src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/show_ads_impl.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="display: inline-table; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px;"><ins id="google_ads_frame2_anchor" style="display: block; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame2" marginheight="0" marginwidth="0" name="google_ads_frame" src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/ads_002.xhtml" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins></div>
+	
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h3 class="comments_headers">1 response so far &#8595;</h3>
+	
+	<ul id="comment_list">
+
+	
+			
+		<li class="comment">
+			<p class="comment_meta">
+				<span class="comment_num">1</span>
+
+				<span class="comment_time">Destiny Maker // </span>
+			</p>
+			<div class="entry">
+				<p>here I have an simple program using java to recieve the mail&#8230;</p>
+<p>Steps involved in receive mail:</p>
+<p>Step 1: Define the mail properties (i.e.) Define the protocol, mail server by using the properties class.</p>
+<p>Step 2: Create the session for read the mail with the properties which we already defined.</p>
+<p>Step 3: Create and connect the store for read the mail.</p>
+<p>Step 4: Define and open the folder which we need to read. Open the folder in read-only mode.</p>
+<p>Step 5: Search the unread contents in the specified folder and stored it into messages array.</p>
+<p>Step 6: Display the messages.</p>
+<p>NOW THE PROGRAM IS AS FOLLOWS..</p>
+<p>package com.info.mail;<br>
+import java.io.*;<br>
+import java.util.*;<br>
+import javax.mail.*;<br>
+import javax.mail.Flags.Flag;<br>
+import javax.mail.search.FlagTerm;</p>
+<p>public class MailReader<br>
+{<br>
+ Folder inbox;</p>
+<p> //Constructor of the calss.<br>
+ public MailReader()<br>
+ {<br>
+ /*  Set the mail properties  */<br>
+ Properties props = System.getProperties();<br>
+ props.setProperty("mail.store.protocol", "imaps");<br>
+ try<br>
+ {<br>
+ /*  Create the session and get the store for read the mail. */<br>
+ Session session = Session.getDefaultInstance(props, null);<br>
+ Store store = session.getStore("imaps");<br>
+ store.connect("imap.gmail.com","&lt;mail ID&gt; ", "&lt;Password&gt;");</p>
+<p> /*  Mention the folder name which you want to read. */<br>
+ inbox = store.getFolder("Inbox");<br>
+ System.out.println("No of Unread Messages : " + inbox.getUnreadMessageCount());</p>
+<p> /*Open the inbox using store.*/<br>
+ inbox.open(Folder.READ_ONLY);</p>
+<p> /*  Get the messages which is unread in the Inbox*/<br>
+ Message messages[] = inbox.search(new FlagTerm(new Flags(Flag.SEEN), false));</p>
+<p> /* Use a suitable FetchProfile    */<br>
+ FetchProfile fp = new FetchProfile();<br>
+ fp.add(FetchProfile.Item.ENVELOPE);<br>
+ fp.add(FetchProfile.Item.CONTENT_INFO);<br>
+ inbox.fetch(messages, fp);</p>
+<p> try<br>
+ {<br>
+ printAllMessages(messages);<br>
+ inbox.close(true);<br>
+ store.close();<br>
+ }<br>
+ catch (Exception ex)<br>
+ {<br>
+ System.out.println("Exception arise at the time of read mail");<br>
+ ex.printStackTrace();<br>
+ }<br>
+ }<br>
+ catch (NoSuchProviderException e)<br>
+ {<br>
+ e.printStackTrace();<br>
+ System.exit(1);<br>
+ }<br>
+ catch (MessagingException e)<br>
+ {<br>
+ e.printStackTrace();<br>
+ System.exit(2);<br>
+ }<br>
+ }</p>
+<p> public void printAllMessages(Message[] msgs) throws Exception<br>
+ {<br>
+ for (int i = 0; i &lt; msgs.length; i++)<br>
+ {<br>
+ System.out.println("MESSAGE #" + (i + 1) + ":");<br>
+ printEnvelope(msgs[i]);<br>
+ }<br>
+ }</p>
+<p> /*  Print the envelope(FromAddress,ReceivedDate,Subject)  */<br>
+ public void printEnvelope(Message message) throws Exception<br>
+ {<br>
+ Address[] a;<br>
+ // FROM<br>
+ if ((a = message.getFrom()) != null)<br>
+ {<br>
+ for (int j = 0; j &lt; a.length; j++)<br>
+ {<br>
+ System.out.println("FROM: " + a[j].toString());<br>
+ }<br>
+ }<br>
+ // TO<br>
+ if ((a = message.getRecipients(Message.RecipientType.TO)) != null)<br>
+ {<br>
+ for (int j = 0; j &lt; a.length; j++)<br>
+ {<br>
+ System.out.println("TO: " + a[j].toString());<br>
+ }<br>
+ }<br>
+ String subject = message.getSubject();<br>
+ Date receivedDate = message.getReceivedDate();<br>
+ String content = message.getContent().toString();<br>
+ System.out.println("Subject : " + subject);<br>
+ System.out.println("Received Date : " + receivedDate.toString());<br>
+ System.out.println("Content : " + content);<br>
+ getContent(message);<br>
+ }</p>
+<p> public void getContent(Message msg)<br>
+ {<br>
+ try<br>
+ {<br>
+ String contentType = msg.getContentType();<br>
+ System.out.println("Content Type : " + contentType);<br>
+ Multipart mp = (Multipart) msg.getContent();<br>
+ int count = mp.getCount();<br>
+ for (int i = 0; i &lt; count; i++)<br>
+ {<br>
+ dumpPart(mp.getBodyPart(i));<br>
+ }<br>
+ }<br>
+ catch (Exception ex)<br>
+ {<br>
+ System.out.println("Exception arise at get Content");<br>
+ ex.printStackTrace();<br>
+ }<br>
+ }</p>
+<p> public void dumpPart(Part p) throws Exception<br>
+ {<br>
+ // Dump input stream ..<br>
+ InputStream is = p.getInputStream();<br>
+ // If "is" is not already buffered, wrap a BufferedInputStream<br>
+ // around it.<br>
+ if (!(is instanceof BufferedInputStream))<br>
+ {<br>
+ is = new BufferedInputStream(is);<br>
+ }<br>
+ int c;<br>
+ System.out.println("Message : ");<br>
+ while ((c = is.read()) != -1)<br>
+ {<br>
+ System.out.write(c);<br>
+ }<br>
+ }</p>
+<p> public static void main(String args[])<br>
+ {<br>
+ new MailReader();<br>
+ }<br>
+}</p>
+ 
+				
+			</div>
+		</li>
+		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+	
+			
+
+		
+
+
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+    		 
+   <p class="tagged"><strong><br>
+    Answers Tags:</strong> <a href="http://www.seasonsecurity.com/a/a/computer" title=" Email Spam" rel="tag">Computer</a> <a href="http://www.seasonsecurity.com/a/a/uninstall" title=" uninstall" rel="tag">Uninstall</a> <a href="http://www.seasonsecurity.com/a/a/spyware" title=" spyware" rel="tag">spyware</a> 
+    <a href="http://www.seasonsecurity.com/a/a/software" title=" security-software" rel="tag">Software</a> <a href="http://www.seasonsecurity.com/a/a/trend-micro" title=" trend-micro" rel="tag">Trend Micro</a> 
+    <a href="http://www.seasonsecurity.com/a/a/update" title=" registry-cleaner" rel="tag">update</a> 
+    <a href="http://www.seasonsecurity.com/a/a/pc-tools" title=" pc-tools" rel="tag">Pc Tools</a> <a href="http://www.seasonsecurity.com/a/a/norton" title=" norton" rel="tag">Norton</a> 
+    <a href="http://www.seasonsecurity.com/a/a/nod32" title=" nod32" rel="tag">Nod32</a> <a href="http://www.seasonsecurity.com/a/a/kaspersky" title=" kaspersky" rel="tag">Kaspersky</a> <a href="http://www.seasonsecurity.com/a/a/hacked" title=" hacked" rel="tag">Hacked</a> <a href="http://www.seasonsecurity.com/a/a/firewall" title=" firewall" rel="tag">Firewall</a> 
+    <a href="http://www.seasonsecurity.com/a/a/malware" title=" malware" rel="tag">malware</a> <a href="http://www.seasonsecurity.com/a/a/avg" title=" avg" rel="tag">Avg</a> <a href="http://www.seasonsecurity.com/a/a/avast" title=" avast" rel="tag">Avast</a> 
+    <a href="http://www.seasonsecurity.com/a/a/antivirus" title=" antivirus" rel="tag">Antivirus</a> <a href="http://www.seasonsecurity.com/a/a/mcafee">Mcafee</a>  <a href="http://www.seasonsecurity.com/a/a/password">Password</a> <a href="http://www.seasonsecurity.com/a/a/wireless">wireless</a> <a href="http://www.seasonsecurity.com/a/a/toolbar">Toolbar</a> <a href="http://www.seasonsecurity.com/a/a/vista">Vista</a> <a href="http://www.seasonsecurity.com/a/a/windows-xp">windows xp</a> <a href="http://www.seasonsecurity.com/a/a/internet-explorer">IE</a> <a href="http://www.seasonsecurity.com/a/a/dll">Dll</a> 
+
+
+    <a href="http://www.seasonsecurity.com/a/a/computer-slow"> </a><a href="http://www.seasonsecurity.com/a/a/windows-7">win 7</a>  <a href="http://www.seasonsecurity.com/a/a/mac">Mac</a> <a href="http://www.seasonsecurity.com/a/a/error">
+
+
+ Error</a> <a href="http://www.seasonsecurity.com/a/a/install">install</a> <a href="http://www.seasonsecurity.com/a/a/firefox">FireFox</a> <a href="http://www.seasonsecurity.com/a/a/exe">exe</a> <a href="http://www.seasonsecurity.com/a/a/hotmail">Hotmail</a> <a href="http://www.seasonsecurity.com/a/a/backup">Backup</a> <a href="http://www.seasonsecurity.com/a/a/virus">Virus</a>  <a href="http://www.seasonsecurity.com/a/a/firewall">Firewall</a> <a href="http://www.seasonsecurity.com/a/a/microsoft">MS</a> <a href="http://www.seasonsecurity.com/a/a/paypal">paypal</a> <a href="http://www.seasonsecurity.com/a/a/htc">htc</a> <a href="http://www.seasonsecurity.com/a/a/adobe">adobe</a> <a href="http://www.seasonsecurity.com/a/a/3g">3g</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/chrom">Chrome</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/usb">usb</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/cpu">cpu</a> <a href="http://www.seasonsecurity.com/a/a/dell">Dell</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/download">download</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/facebook">facebook</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/ipad">iPad</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/iphone">iphone</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/itunes">itunes</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/wifi">wifi</a> 
+
+
+ <a href="http://www.seasonsecurity.com/a/a/unlocked">unlocked</a>  <a href="http://www.seasonsecurity.com/a/a/software">software</a> <a href="http://www.seasonsecurity.com/a/a/twiter">Twitter</a> <a href="http://www.seasonsecurity.com/a/a/bluetooth">Bluetooth</a> <br>
+     <br>
+	
+
+  </p>
+		</div>
+		<div id="sidebar"> 
+  <div align="center"><img src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/advertisement.gif" height="15" width="123"><br>
+ 
+  </div>
+  <ul class="sidebar_list">
+    <li class="widget"> 
+      <h2>Most popular Software downloads</h2>
+      <ul>
+        
+        <li><a href="http://www.seasonsecurity.com/pctools-wwwpctoolscom-software-free-download" title="Pctools (www.pctools.com) Download">Pctools</a>
+        </li><li>kaspersky 
+        </li></ul>
+    </li>
+  </ul>
+</div>
+		
+			
+	</div>
+
+<!--cos-html-cache-safe-tag-->
+<div class="copy1 ft"><a href="#">About</a> | <a href="#">Contact Us</a> | 
+ <a href="http://www.seasonsecurity.com/sitemap">Sitemap</a> <a href="http://www.seasonsecurity.com/a">New</a> <a href="http://www.seasonsecurity.com/"> Security Software review and download</a> 
+    .  All rights reserved !</div>
+</div>
+
+<!-- 2010-09-24 01:23:09  2.7.3 --></div><script src="lagu.karo.or.id_Principles_of_Computer_Graphics_files/predictadme.js" type="text/javascript"></script></body></html>

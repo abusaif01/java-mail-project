@@ -1,0 +1,87 @@
+#logo{ margin:0 auto; padding-top:3px; padding-left:0px; text-align:left;}
+#ad1{ margin:0 auto; padding-top:20px; padding-left:0px; text-align:right;}
+#header{ width:100%; height:60px;  repeat-x;margin-top:0px;}
+#header1{width:970px; height:60px; padding-left:0px; margin:0 auto; text-align:left; position:relative;}
+
+/*copyright*/
+.copy1{height:38px;color:#999999;width:970px;margin:0 auto;padding-top:10px;font-size:11px;text-align:center;}
+.ft a:link,.ft a:visited{text-decoration:none;color:#999999;}
+.ft a:active,.ft a:hover{text-decoration:underline;color:#999999;}
+.rel{
+	BORDER: #ccc 1px solid;PADDING: 10px 8px 8px 8px;font-size:11px ;line-height: 1.4em;
+}
+.relad{
+	BORDER: #ccc 1px solid;PADDING: 0px 0px 0px 0px;margin-bottom:10px;
+}
+.relad2{
+	BORDER: #ccc 1px solid;PADDING: 0px 0px 0px 0px;margin-bottom:10px;margin-top:10px;
+}
+.reladg{
+	BORDER-top: #ccc 1px solid;BORDER-bottom: #ccc 1px solid;PADDING: 0px 0px 0px 0px;margin-bottom:10px;
+}
+.reladg1{
+	BORDER-bottom: #ccc 1px solid;PADDING: 0px 0px 0px 0px;margin-bottom:10px;
+}
+.rel a:link{text-decoration:none;font-size:11px }
+.rel a:visited{text-decoration:none;font-size: 11px }
+.rel a:hover{text-decoration:underline;font-size:11px }
+
+.rel li{ list-style: none ; margin: 3px 0 0 0 0; }
+
+.article {
+			font-size: 11px;BORDER-top: #CECFCE 1px solid; BORDER-bottom: #CECFCE 1px solid; margin-top:5px;margin-bottom:15px;margin-right:15px; PADDING-right:8px;PADDING-top:8px;PADDING-bottom:12px;FLOAT: left; 
+		}
+#adtop{float: left;margin: 0px 0px 0px 0;PADDING:5px 0px 5px 5px;font: 10px Verdana, Arial, Helvetica, sans-serif; }		
+#adtop .ad  {float: left; margin: 0px -3px 0 0; padding: 0px 0px 0 0; width: 298px;}
+#adtop h5.title {font: bold 12px arial,helvetica; padding: 0; margin: 0 0 3px 0;}
+#adtop a:link {color:#0000FF;text-decoration:underline;font: bold 12px arial,helvetica;}
+#adtop a:visited {color:#0000FF;text-decoration:underline;font: bold 12px arial,helvetica;}
+#adtop a:hover {color:#0000FF;text-decoration:none;font: bold 12px arial,helvetica;}
+#adtop p.con {font: 10px Verdana, Arial, Helvetica, sans-serif; padding: 0; margin: 0 0 3px 0;}
+#navcontainer
+{   width: 970px; 
+	background: #ffffff;
+	margin: 3px 0px 13px 0px;
+	min-height:2.85em
+}
+
+ul#navlist
+{
+	display: block;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+ul#navlist li
+{
+	display: block;
+	float: left;
+	position:relative
+}
+
+ul#navlist li a
+{
+	display: block;
+	float: left;
+	padding: 8px 8px;
+	text-decoration: none;
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+	font-size: 1.2em;
+	color: #000000;
+	border: 1px solid #fff;
+	border-width: 0 1px 1px 0;
+	white-space: nowrap;
+}
+
+ul#navlist li a:hover
+{
+	background: #fff;
+	color: #000000;
+}
+
+ul#navlist li a.active
+{
+	color: #000;
+	font-weight: bold;
+}		
